@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roseli Martiñs | Espaço Anshin Massoterapia</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e2e9e2',
+                            200: '#c5d3c5',
+                            400: '#a3b1a3',
+                            600: '#6b705c',
+                            800: '#3f4233',
+                            900: '#2d2f24',
+                        },
+                        gold: {
+                            soft: '#D4AF37',
+                            satin: '#E5D5B0',
+                        },
+                        earth: {
+                            50: '#fdfaf5',
+                            100: '#f5f1e9',
+                            200: '#e8e1d4',
+                            500: '#8c7e6d',
+                            800: '#4a3f35',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-gold': 'pulse-gold 2s infinite',
+                        'blink': 'blink 1.5s infinite ease-in-out',
+                        'marquee': 'marquee 30s linear infinite',
+                        'pulsar': 'pulsar 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-gold': {
+                            '0%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
+                            '70%': { transform: 'scale(1.05)', boxShadow: '0 0 0 15px rgba(212, 175, 55, 0)' },
+                            '100%': { transform: 'scale(1)', boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)' },
+                        },
+                        'blink': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.02)' },
+                        },
+                        'marquee': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        'pulsar': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1', textShadow: '0 0 0px rgba(255, 255, 255, 0)' },
+                            '50%': { transform: 'scale(1.05)', opacity: '0.9', textShadow: '0 0 15px rgba(212, 175, 55, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-earth-50 text-earth-800 font-sans antialiased;
+            }
+            h1, h2, h3, h4 {
+                @apply font-serif;
+            }
+        }
+        .btn-primary {
+            @apply bg-sage-600 hover:bg-gold-soft text-white px-8 py-4 rounded-full transition-all duration-500 ease-in-out flex items-center justify-center gap-2 font-medium shadow-md hover:shadow-xl hover:scale-105 active:scale-95;
+        }
+        .brand-phrase {
+            @apply font-serif italic text-sage-600;
+        }
+        .back-to-top {
+            @apply fixed bottom-8 right-8 md:right-24 z-40 bg-sage-800 text-white shadow-lg transition-all duration-300 hover:bg-gold-soft hover:-translate-y-2 opacity-0 invisible;
+        }
+        .back-to-top.visible {
+            @apply opacity-100 visible;
+        }
+        .animate-marquee {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-pulsar {
+            animation: pulsar 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        @keyframes pulsar {
+            0%, 100% { transform: scale(1); opacity: 1; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+            50% { transform: scale(1.05); opacity: 0.9; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+        }
+        .animate-pulse-gold {
+            animation: pulse-gold 2s infinite;
+        }
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .animate-blink {
+            animation: blink 1.5s infinite ease-in-out;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+        .card-hover {
+            @apply transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)];
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-8">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto px-4 md:px-6 flex items-center justify-between">
+            <a href="#" class="flex items-center shrink-0 mr-4 md:mr-12">
+                <img src="https://res.cloudinary.com/dq1vvtg9v/image/upload/v1773591696/ROSELI_-_LOGOTIPO_ANSHIN_yeqvpy.png" alt="Roseli Martiñs" class="h-20 sm:h-28 md:h-36 w-auto brightness-0 invert transition-all duration-300" id="nav-logo">
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-10">
+                <a href="#home" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Início</a>
+                <a href="#sobre" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Sobre mim</a>
+                <a href="#espaco" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Nosso Espaço</a>
+                <a href="#servicos" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Serviços</a>
+                <a href="#resultados" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Resultados</a>
+                <a href="#contato" class="text-lg font-medium text-white hover:text-white/70 transition-colors">Contato</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="lg:hidden text-white" id="menu-toggle">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-earth-50 border-b border-earth-200 p-6 flex flex-col gap-4 shadow-xl">
+            <a href="#home" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Início</a>
+            <a href="#sobre" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Sobre mim</a>
+            <a href="#espaco" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Nosso Espaço</a>
+            <a href="#servicos" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Serviços</a>
+            <a href="#resultados" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Resultados</a>
+            <a href="#contato" class="text-xl font-serif py-2 border-b border-earth-100 text-sage-800">Contato</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2000" alt="Ambiente relaxante" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <div class="relative z-10 w-full text-center pt-24 md:pt-32 px-6">
+            <div class="flex flex-wrap items-center justify-center gap-4 mb-8 mt-[50px]">
+                <span class="bg-white/10 backdrop-blur-md text-white text-[10px] sm:text-[12px] font-bold uppercase tracking-wider px-5 py-2 rounded-full flex items-center gap-2 border border-white/20">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> Atendimento exclusivo para mulheres
+                </span>
+                <span class="bg-white/10 backdrop-blur-md text-white text-[10px] sm:text-[12px] font-bold uppercase tracking-wider px-5 py-2 rounded-full flex items-center gap-2 border border-white/20">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> Técnicas terapêuticas integrativas
+                </span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-7xl leading-[1.1] text-white font-serif font-bold mb-8">
+                Roseli Martiñs | Massoterapia <br>
+                <span class="animate-pulsar inline-block">Exclusivo para Mulheres</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-white/90 max-w-4xl mx-auto font-light mb-12 leading-relaxed">
+                Recupere sua leveza através de protocolos manuais integrativos em um ambiente acolhedor, desenhado exclusivamente para o cuidado e o equilíbrio do corpo feminino.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/5511974221191" target="_blank" class="btn-primary animate-pulse-gold">
+                    <i data-lucide="message-circle" class="animate-blink"></i>
+                    Agendar pelo WhatsApp
+                </a>
+                <a href="#espaco" class="bg-transparent border border-white text-white hover:bg-white/10 px-8 py-4 rounded-full uppercase font-bold tracking-widest transition-colors">
+                    Conheça o Espaço
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-sage-800 py-6 overflow-hidden border-y border-white/10">
+        <div class="animate-marquee whitespace-nowrap flex items-center">
+            <span class="text-white text-2xl md:text-4xl font-serif italic px-4">Entre um toque e outro… o bem-estar acontece. //&nbsp;</span>
+            <span class="text-white text-2xl md:text-4xl font-serif italic px-4">Entre um toque e outro… o bem-estar acontece. //&nbsp;</span>
+            <span class="text-white text-2xl md:text-4xl font-serif italic px-4">Entre um toque e outro… o bem-estar acontece. //&nbsp;</span>
+            <span class="text-white text-2xl md:text-4xl font-serif italic px-4">Entre um toque e outro… o bem-estar acontece. //&nbsp;</span>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-32 max-w-[90%] md:max-w-[80%] mx-auto flex flex-col lg:flex-row gap-16 items-center">
+        <div class="flex-1">
+            <h2 class="text-3xl md:text-5xl text-sage-800 font-bold mb-8">Sobre a Roseli Martiñs</h2>
+            <div class="space-y-6 text-lg text-earth-800">
+                <p>Sou Roseli Martiñs, massoterapeuta e proprietária do Espaço ANSHIN Massoterapia. Com uma trajetória dedicada ao bem-estar feminino, trago autoridade e um olhar sensível para cada protocolo realizado. Atendo exclusivamente mulheres que buscam aliviar dores, reduzir o estresse, a ansiedade e cuidar melhor do próprio corpo.</p>
+                <p>Meu atendimento é integrativo e utiliza técnicas especializadas como <strong>Massoterapia, Drenagem Linfática, Reflexoterapia Podal e Aromaterapia</strong>. Tudo começa pela escuta atenta, para entender seu momento e suas necessidades únicas.</p>
+                <p class="font-serif text-2xl italic text-sage-600 border-l-4 border-gold-soft pl-6 py-2">
+                    "Meu propósito é oferecer um refúgio de cuidado onde cada toque promove uma transformação real."
+                </p>
+            </div>
+        </div>
+        <div class="flex-1">
+            <img src="https://res.cloudinary.com/dq1vvtg9v/image/upload/v1773590868/roseli_martins_massoterapia_em_ribeirao_pires_perto_de_mim53_c30i2s.jpg" alt="Roseli Martiñs" class="rounded-3xl shadow-2xl w-full">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicos" class="py-32 bg-earth-100">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl text-sage-800 font-bold mb-6">Nossos Serviços</h2>
+                <p class="text-xl text-sage-600 font-serif italic">Protocolos exclusivos para o seu bem-estar</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-[40px] shadow-xl hover:scale-105 transition-transform flex flex-col h-full">
+                    <div class="w-16 h-16 bg-gold-soft rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i data-lucide="sparkles" class="text-sage-900 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 uppercase">Lifting Facial Manual</h3>
+                    <p class="text-earth-800 mb-6 flex-grow">Rejuvenescimento natural através do estímulo muscular profundo, sem procedimentos invasivos.</p>
+                    <a href="https://wa.me/5511974221191" target="_blank" class="text-sage-600 font-bold flex items-center gap-2">Agendar <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-[40px] shadow-xl hover:scale-105 transition-transform flex flex-col h-full">
+                    <div class="w-16 h-16 bg-gold-soft rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i data-lucide="droplets" class="text-sage-900 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 uppercase">Drenagem Linfática</h3>
+                    <p class="text-earth-800 mb-6 flex-grow">Redução de inchaços, desintoxicação e melhora significativa do sistema circulatório.</p>
+                    <a href="https://wa.me/5511974221191" target="_blank" class="text-sage-600 font-bold flex items-center gap-2">Agendar <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-[40px] shadow-xl hover:scale-105 transition-transform flex flex-col h-full">
+                    <div class="w-16 h-16 bg-gold-soft rounded-2xl flex items-center justify-center mb-6 shadow-lg">
+                        <i data-lucide="footprints" class="text-sage-900 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-sage-800 mb-4 uppercase">Reflexologia Podal</h3>
+                    <p class="text-earth-800 mb-6 flex-grow">Equilíbrio e alívio de tensões através de pontos estratégicos nos pés que refletem todo o corpo.</p>
+                    <a href="https://wa.me/5511974221191" target="_blank" class="text-sage-600 font-bold flex items-center gap-2">Agendar <i data-lucide="chevron-right" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main CTA Section -->
+    <section class="py-32 px-6 bg-white">
+        <div class="max-w-[80%] mx-auto text-center bg-sage-800 text-white p-12 md:p-16 rounded-[40px] shadow-2xl flex flex-col items-center gap-8 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                <i data-lucide="flower-2" class="absolute -bottom-20 -right-20 w-[400px] h-[400px]"></i>
+            </div>
+            <h3 class="text-2xl md:text-4xl font-serif italic relative z-10 font-bold w-full">
+                "Aqui você encontra Muito mais que uma massagem, é um lugar para você se sentir em casa dentro de si mesma."
+            </h3>
+            <p class="text-lg md:text-xl text-white/90 relative z-10 w-full font-light leading-relaxed">
+                Entendo que seu corpo carrega muito mais do que tensões físicas; ele guarda sua rotina, sua história e suas emoções. Por isso, no meu espaço, o cuidado é verdadeiramente integrativo. Antes de qualquer toque, dedico meu tempo para entender você. Através do Método Anshin, traduzo o que seu corpo fala em um protocolo exclusivo e personalizado, desenhado para acolher suas necessidades únicas e transformar cada ponto de estresse em uma profunda e duradoura sensação de leveza e equilíbrio. Você não sai apenas com uma sessão feita, sai entendendo melhor a si mesma.
+            </p>
+            <a href="https://wa.me/5511974221191" target="_blank" class="btn-primary bg-white text-sage-800 hover:bg-sage-50 px-12 py-5 text-base font-bold tracking-[0.2em] relative z-10 inline-flex">
+                AGENDAR AGORA
+            </a>
+        </div>
+    </section>
+
+    <!-- Anshin Method -->
+    <section class="py-32 bg-sage-50">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl text-sage-900 font-bold mb-8">Método Anshin</h2>
+                    <p class="text-lg text-sage-800 mb-8 leading-relaxed">
+                        Entendo que seu corpo carrega muito mais do que tensões físicas; ele guarda sua rotina, sua história e suas emoções. Por isso, no meu espaço, o cuidado é verdadeiramente integrativo. Antes de qualquer toque, dedico meu tempo para entender você. Através do Método Anshin, traduzo o que seu corpo fala em um protocolo exclusivo e personalizado, desenhado para acolher suas necessidades únicas e transformar cada ponto de estresse em uma profunda e duradoura sensação de leveza e equilíbrio. Você não sai apenas com uma sessão feita, sai entendendo melhor a si mesma.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 bg-gold-soft rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                            </div>
+                            <p class="text-sage-800"><strong>Escuta Atenta:</strong> Entendemos suas dores antes de começar.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 bg-gold-soft rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                            </div>
+                            <p class="text-sage-800"><strong>Personalização:</strong> Cada sessão é única para você.</p>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-6 h-6 bg-gold-soft rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+                            </div>
+                            <p class="text-sage-800"><strong>Equilíbrio:</strong> Foco no bem-estar físico e emocional.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&q=80&w=800" alt="Método Anshin" class="rounded-[60px] shadow-2xl">
+                    <div class="absolute -bottom-10 -left-10 bg-white p-8 rounded-3xl shadow-xl hidden md:block">
+                        <p class="text-4xl font-serif font-bold text-sage-600">100%</p>
+                        <p class="text-sage-800 font-medium">Foco no seu bem-estar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="resultados" class="py-32 bg-earth-50">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-6xl text-sage-800 font-bold mb-6">Resultados Reais</h2>
+                <p class="text-xl text-sage-600 font-serif italic">Transformações visíveis através do cuidado manual</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Before/After Slider 1 -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none border border-earth-100 ba-container">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 w-full h-full overflow-hidden ba-overlay" style="width: 50%;">
+                            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" alt="Antes" class="absolute inset-0 w-full h-full object-cover ba-before-img">
+                        </div>
+                        <div class="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-20 ba-handle" style="left: 50%;">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-xl flex items-center justify-center">
+                                <i data-lucide="move-horizontal" class="w-4 h-4 text-sage-600"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 z-10 bg-black/30 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Antes</div>
+                        <div class="absolute top-4 right-4 z-10 bg-black/30 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Depois</div>
+                    </div>
+                    <h4 class="font-serif text-2xl text-sage-800 font-bold">Lifting Facial Manual</h4>
+                </div>
+
+                <!-- Before/After Slider 2 -->
+                <div class="flex flex-col items-center gap-4">
+                    <div class="relative w-full aspect-square rounded-3xl overflow-hidden shadow-2xl cursor-col-resize select-none border border-earth-100 ba-container">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" alt="Depois" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 w-full h-full overflow-hidden ba-overlay" style="width: 50%;">
+                            <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800" alt="Antes" class="absolute inset-0 w-full h-full object-cover ba-before-img">
+                        </div>
+                        <div class="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-20 ba-handle" style="left: 50%;">
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-xl flex items-center justify-center">
+                                <i data-lucide="move-horizontal" class="w-4 h-4 text-sage-600"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4 z-10 bg-black/30 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Antes</div>
+                        <div class="absolute top-4 right-4 z-10 bg-black/30 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Depois</div>
+                    </div>
+                    <h4 class="font-serif text-2xl text-sage-800 font-bold">Drenagem Linfática</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato" class="bg-sage-900 text-sage-50 pt-32 pb-12 px-6">
+        <div class="max-w-[90%] md:max-w-[80%] mx-auto grid grid-cols-1 md:grid-cols-3 gap-20 border-b border-sage-800 pb-20">
+            <div>
+                <img src="https://res.cloudinary.com/dq1vvtg9v/image/upload/v1773591696/ROSELI_-_LOGOTIPO_ANSHIN_yeqvpy.png" alt="Logo" class="h-32 brightness-0 invert mb-8">
+                <p class="text-sage-400 leading-relaxed">Massoterapia terapêutica e terapias integrativas exclusivas para o cuidado e bem-estar da mulher.</p>
+                <p class="brand-phrase text-sage-100 mt-6 font-bold">"Entre um toque e outro… o bem-estar acontece."</p>
+            </div>
+            <div>
+                <h4 class="font-serif text-2xl font-bold mb-8">Contato</h4>
+                <ul class="space-y-4 text-sage-300">
+                    <li class="flex items-center gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-gold-soft"></i> Ribeirão Pires - SP</li>
+                    <li class="flex items-center gap-3"><i data-lucide="message-circle" class="w-5 h-5 text-gold-soft"></i> (11) 97422-1191</li>
+                    <li class="flex items-center gap-3"><i data-lucide="clock" class="w-5 h-5 text-gold-soft"></i> Seg - Sex: 08h às 18h | Sáb: 08h às 12h</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-serif text-2xl font-bold mb-8">Siga-nos</h4>
+                <div class="flex gap-6">
+                    <a href="https://www.instagram.com/roselimartinsmassoterapeuta/" target="_blank" class="bg-white/10 p-4 rounded-full hover:bg-gold-soft transition-colors"><i data-lucide="instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61557301497414" target="_blank" class="bg-white/10 p-4 rounded-full hover:bg-gold-soft transition-colors"><i data-lucide="facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12 text-sage-500 text-sm tracking-widest uppercase">
+            © 2026 Roseli Martiñs - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top flex items-center gap-2 p-3 md:px-5 md:py-3 rounded-full" aria-label="Voltar ao topo">
+        <span class="hidden md:inline text-xs font-bold uppercase tracking-widest">Voltar ao topo</span>
+        <i data-lucide="arrow-right" class="-rotate-90 w-5 h-5"></i>
+    </button>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/5511974221191" target="_blank" class="fixed bottom-6 right-6 z-[60] bg-[#25D366] hover:bg-gold-soft text-white p-3.5 rounded-full shadow-2xl hover:scale-110 transition-all duration-300 animate-pulse-gold flex items-center justify-center group">
+        <i data-lucide="message-circle" class="w-8 h-8 animate-blink"></i>
+        <span class="absolute right-full mr-4 bg-white text-sage-800 px-4 py-2 rounded-lg text-sm font-medium shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-earth-100">Fale com Roseli</span>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-earth-50/90', 'backdrop-blur-md', 'border-b', 'border-earth-200', 'py-4');
+                navbar.classList.remove('bg-transparent', 'py-8');
+                navLogo.classList.remove('brightness-0', 'invert');
+                document.querySelectorAll('#navbar a').forEach(a => {
+                    a.classList.remove('text-white');
+                    a.classList.add('text-earth-800');
+                });
+                document.getElementById('menu-toggle').classList.remove('text-white');
+                document.getElementById('menu-toggle').classList.add('text-sage-800');
+            } else {
+                navbar.classList.remove('bg-earth-50/90', 'backdrop-blur-md', 'border-b', 'border-earth-200', 'py-4');
+                navbar.classList.add('bg-transparent', 'py-8');
+                navLogo.classList.add('brightness-0', 'invert');
+                document.querySelectorAll('#navbar a').forEach(a => {
+                    a.classList.remove('text-earth-800');
+                    a.classList.add('text-white');
+                });
+                document.getElementById('menu-toggle').classList.remove('text-sage-800');
+                document.getElementById('menu-toggle').classList.add('text-white');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Back to Top Visibility
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Before/After Slider Logic
+        document.querySelectorAll('.ba-container').forEach(container => {
+            const overlay = container.querySelector('.ba-overlay');
+            const handle = container.querySelector('.ba-handle');
+            const beforeImg = container.querySelector('.ba-before-img');
+
+            const move = (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = ((e.pageX || (e.touches ? e.touches[0].pageX : 0)) - rect.left);
+                let position = (x / rect.width) * 100;
+                
+                if (position < 0) position = 0;
+                if (position > 100) position = 100;
+
+                overlay.style.width = `${position}%`;
+                handle.style.left = `${position}%`;
+                beforeImg.style.width = `${100 / (position / 100)}%`;
+            };
+
+            container.addEventListener('mousemove', move);
+            container.addEventListener('touchmove', move);
+        });
+    </script>
+</body>
+</html>

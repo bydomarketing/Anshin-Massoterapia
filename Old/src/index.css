@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-sage-50: #f4f7f4;
+  --color-sage-100: #e2e9e2;
+  --color-sage-200: #c5d3c5;
+  --color-sage-600: #6b705c; /* Olive Green */
+  --color-sage-800: #3f4233; /* Darker Olive */
+  
+  --color-gold-soft: #D4AF37;
+  --color-gold-satin: #E5D5B0;
+  
+  --color-earth-50: #fdfaf5; /* Creme */
+  --color-earth-100: #f5f1e9; /* Beige */
+  --color-earth-200: #e8e1d4;
+  --color-earth-800: #4a3f35;
+}
+
+@layer base {
+  body {
+    @apply bg-earth-50 text-earth-800 font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+.brand-phrase {
+  @apply font-serif italic text-sage-600;
+}
+
+.btn-primary {
+  @apply bg-sage-600 hover:bg-gold-soft text-white px-8 py-4 rounded-full transition-all duration-500 ease-in-out flex items-center justify-center gap-2 font-medium shadow-md hover:shadow-xl hover:scale-105 active:scale-95;
+}
+
+.nav-link {
+  @apply text-sage-800 font-medium hover:text-sage-600 transition-all duration-300 relative after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-gold-soft after:transition-all after:duration-300 hover:after:w-full;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.05] hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)];
+}
+
+.reveal-up {
+  @apply opacity-0 translate-y-10 transition-all duration-700 ease-out;
+}
+
+.reveal-up.active {
+  @apply opacity-100 translate-y-0;
+}
+
+.content-below-hero {
+  font-size: 1.25rem; /* 20px, which is 25% larger than 16px */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-gold {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+@keyframes pulsar {
+  0%, 100% { transform: scale(1); opacity: 1; text-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+  50% { transform: scale(1.05); opacity: 0.9; text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+}
+
+.animate-pulsar {
+  animation: pulsar 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.animate-marquee {
+  display: flex;
+  width: fit-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s infinite;
+}
+
+.animate-blink {
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+.back-to-top {
+  @apply fixed bottom-8 right-8 md:right-24 z-40 bg-sage-800 text-white shadow-lg transition-all duration-300 hover:bg-gold-soft hover:-translate-y-2 opacity-0 invisible;
+}
+
+.back-to-top.visible {
+  @apply opacity-100 visible;
+}
