@@ -21,9 +21,9 @@ export default defineConfig(({mode}) => {
               return 'css/[name]-[hash][extname]';
             }
             if (/\.(gif|jpe?g|png|svg|webp)$/.test(name)) {
-              return 'img/[name]-[hash][extname]';
+              return 'assets/[name]-[hash][extname]';
             }
-            return '[name]-[hash][extname]';
+            return 'assets/[name]-[hash][extname]';
           },
         },
       },

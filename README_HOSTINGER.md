@@ -1,18 +1,17 @@
-# 🚀 Guia de Hospedagem - Anshin Massoterapia (Hostinger)
+# 🚀 Guia de Hospedagem - Anshin Massoterapia (Hostinger Business Plan)
 
-Este documento detalha como configurar o projeto para rodar no subdomínio `anshin.bydomarketing.com.br` seguindo a estrutura de pastas solicitada.
+Este documento detalha como configurar o projeto para rodar no subdomínio `anshin.bydomarketing.com.br` com a estrutura obrigatória da pasta `public_html`.
 
-## 1. Estrutura de Pastas na Hostinger
+## 1. Estrutura Final no Servidor
 
-Certifique-se de que a estrutura no seu Gerenciador de Arquivos (ou via SSH) seja a seguinte:
+Conforme requisitos do Plano Business da Hostinger, a estrutura de pastas deve ser:
 
 ```text
-/ (raiz da conta)
-├── public_html/             # Domínio principal (bydomarketing.com.br)
-└── clientes/
-    └── anshin/
-        ├── public/          # Document Root do subdomínio (onde o site vive)
-        └── repo/            # Onde o código-fonte (este repositório) será clonado
+/public_html/
+   /clientes/
+      /anshin/
+         /public      ← arquivos finais (Site publicado - Document Root)
+         /repo        ← código fonte opcional (Git)
 ```
 
 ## 2. Configuração do Subdomínio
@@ -20,33 +19,31 @@ Certifique-se de que a estrutura no seu Gerenciador de Arquivos (ou via SSH) sej
 No painel da Hostinger:
 1. Vá em **Domínios > Subdomínios**.
 2. Crie o subdomínio `anshin.bydomarketing.com.br`.
-3. **IMPORTANTE:** Altere o "Document Root" (Diretório base) para: `/clientes/anshin/public`
+3. **DIRETÓRIO PERSONALIZADO:** Altere o "Document Root" (Diretório base) para: `public_html/clientes/anshin/public`.
 4. Certifique-se de ativar o **SSL** para este subdomínio.
 
 ## 3. Deploy Automatizado (Webhooks + GitHub Actions)
 
-Para separar o código de desenvolvimento do site final (Build) e garantir que a Hostinger puxe apenas o que é necessário para a pasta pública, configuramos o seguinte fluxo:
+Para manter a separação total entre o código fonte (Dev) e o build final (Produção):
 
 1.  O **GitHub Actions** ([deploy.yml](.github/workflows/deploy.yml)) monitora a branch `main`.
-2.  Sempre que você der um `git push` para a `main`, ele gera o build e envia os arquivos prontos para uma branch isolada chamada **`production`**.
+2.  A cada `git push` na `main`, o build é gerado e os arquivos da pasta `dist/` são enviados para uma branch isolada chamada **`production`**.
 3.  O **Webhook da Hostinger** deve ser configurado para monitorar a branch **`production`**.
 
 ### Como configurar na Hostinger:
 1. No painel da Hostinger, vá em **Site > Git**.
 2. No campo **Branch**, coloque: `production`.
-3. No campo **Diretório de Instalação**, coloque: `/clientes/anshin/public`.
-4. Ative o **Webhook** fornecido na URL do repositório no GitHub para que o deploy seja automático.
+3. No campo **Diretório de Instalação**, coloque: `public_html/clientes/anshin/public`.
+4. Use o **Git Webhook** do GitHub para automatizar a puxada de arquivos.
 
-## 4. Segurança Aplicada (Hardening)
+## 4. Segurança e Hardening
 
-Como especialista, apliquei as seguintes camadas de segurança:
+*   **Remoção de APIs:** Toda e qualquer chave sensível (ex: Gemini) foi removida do código para evitar exposição.
+*   **Separação Dev/Build:** Somente os arquivos compilados (`index.html`, `js/`, `css/`, `assets/`) são publicados. O código fonte nunca chega à web.
+*   **.htaccess Especializado:** Criado para garantir que rotas do React (SPA) funcionem sem erro 404, além de ativar compressão Gzip e cache.
+*   **Caminhos Relativos:** O projeto está configurado com `base: './'` no Vite para funcionar corretamente dentro de subdiretórios ou subdomínios.
 
-1.  **Remoção da API Gemini:** Conforme solicitado, removi todas as referências e dependências da API do Gemini para eliminar riscos de exposição de chaves.
-2.  **Separação Dev/Build:** Ao usar a branch `production`, seu código-fonte (`src/`, `package.json`, etc.) nunca chega à pasta pública do servidor. Apenas o site compilado (`dist/`) é enviado via webhook.
-3.  **.htaccess Blindado:**
-    - **SPA Routing:** Resolve o erro 404 do React quando o usuário atualiza a página.
-    - **Aumento de Performance:** Gzip e Cache ativos para carregamento ultra-rápido.
-    - **Prevenção de Malware:** Bloqueio de execução de scripts estranhos na pasta de assets.
+## 5. Manutenção
 
 > [!TIP]
-> **Modo de Manutenção:** Se precisar desativar o site temporariamente, você pode renomear o arquivo `index.html` na pasta `public` ou adicionar uma regra de `RewriteRule` no `.htaccess`.
+> **Build Limpo:** A configuração do Vite (`emptyOutDir: true`) garante que a pasta de build seja totalmente limpa antes de cada nova publicação, evitando que arquivos antigos acumulem no servidor.
