@@ -7,6 +7,27 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   return {
     plugins: [react(), tailwindcss()],
+    base: './',
+    build: {
+      emptyOutDir: true,
+      outDir: 'dist',
+      rollupOptions: {
+        output: {
+          chunkFileNames: 'js/[name]-[hash].js',
+          entryFileNames: 'js/[name]-[hash].js',
+          assetFileNames: (assetInfo) => {
+            const name = assetInfo.name || '';
+            if (/\.(css)$/.test(name)) {
+              return 'css/[name]-[hash][extname]';
+            }
+            if (/\.(gif|jpe?g|png|svg|webp)$/.test(name)) {
+              return 'img/[name]-[hash][extname]';
+            }
+            return '[name]-[hash][extname]';
+          },
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
