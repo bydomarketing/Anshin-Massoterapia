@@ -489,7 +489,7 @@ const Home = () => {
             className="flex flex-col items-center gap-6 md:gap-8 max-w-[90%] mx-auto"
           >
             <div className="flex flex-wrap items-center justify-center gap-4 mb-4">
-              {['Atendimento exclusivo para mulheres', 'Técnicas terapêuticas integrativas', 'Cuidado físico e emocional'].map((tag) => (
+              {['Atendimento exclusivo para mulheres', 'Técnicas terapêuticas integrativas', 'Cuidados físico e emocional'].map((tag) => (
                 <span key={tag} className="bg-white/10 backdrop-blur-md text-white text-[10px] sm:text-[12px] font-bold uppercase tracking-wider px-5 py-2 rounded-full flex items-center gap-2 border border-white/20 w-fit">
                   <CheckCircle2 size={14} /> {tag}
                 </span>
@@ -968,59 +968,796 @@ const MetodoAnshin = () => (
 );
 
 const TreatmentPage = ({ title, description, benefits, indications, image, ctaLabel }: any) => (
-  <div className="pt-32 section-padding">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      <motion.div 
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        className="flex flex-col gap-8"
-      >
-        <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">{title}</h1>
-        <p className="text-lg leading-relaxed text-earth-800/80">{description}</p>
-        
-        <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
-          <ul className="grid grid-cols-1 gap-2">
-            {benefits.map((b: string) => (
-              <li key={b} className="flex items-center gap-2">
-                <CheckCircle2 size={16} className="text-sage-600" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">{title}</h1>
+          <p className="text-lg leading-relaxed text-earth-800/80">{description}</p>
+          
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+            <ul className="grid grid-cols-1 gap-2">
+              {benefits.map((b: string) => (
+                <li key={b} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {indications && (
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xl font-serif text-sage-800 font-bold">Indicado para:</h3>
+              <div className="flex flex-wrap gap-2">
+                {indications.map((ind: string) => (
+                  <span key={ind} className="bg-earth-100 px-4 py-2 rounded-full text-sm">{ind}</span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <WhatsAppButton className="w-fit" label={ctaLabel} />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        >
+          <img src={image} alt={title} className="w-full aspect-[4/5] object-cover" referrerPolicy="no-referrer" />
+        </motion.div>
+      </div>
+    </div>
+  </div>
+);
+
+const LiftingFacialPage = () => (
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Lifting Facial Manual</h1>
+          
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <p>
+              O Lifting Facial Manual é um método de rejuvenescimento natural e não invasivo que realizo através de estímulos musculares e técnicas manuais específicas para cuidar da pele e da musculatura do rosto.
+            </p>
+            <p>
+              Esse atendimento foi pensado para mulheres que desejam cuidar da aparência de forma mais natural, sem procedimentos invasivos e respeitando o tempo e as necessidades da própria pele.
+            </p>
+            <p>
+              Durante a sessão, utilizo movimentos que ajudam a estimular a circulação facial, ativar a musculatura e aliviar tensões que muitas vezes ficam acumuladas no rosto.
+            </p>
+            <p>
+              Com esse estímulo, a pele tende a apresentar uma aparência mais descansada, firme e saudável.
+            </p>
+            <p>
+              Mais do que um cuidado estético, gosto de enxergar o lifting facial como um momento de autocuidado e bem-estar.
+            </p>
+            <p>
+              Muitas vezes, o rosto também carrega o cansaço, o estresse e a tensão do dia a dia — e quando cuidamos dele com presença e delicadeza, isso também se reflete na autoestima e na forma como nos sentimos.
+            </p>
+            <p>
+              Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada atendimento de forma personalizada, observando o momento e as necessidades de cada mulher.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+            <ul className="grid grid-cols-1 gap-2">
+              {[
+                "suaviza linhas de expressão",
+                "melhora a firmeza da pele",
+                "estimula a circulação",
+                "tonifica a musculatura facial",
+                "promove aspecto mais rejuvenescido",
+                "ajuda no relaxamento facial",
+                "melhora o viço e a aparência da pele"
+              ].map((b: string) => (
+                <li key={b} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Indicações:</h3>
+            <p>
+              O Lifting Facial Manual é ideal para quem busca cuidados faciais naturais, prevenção do envelhecimento e melhora da aparência da pele sem procedimentos invasivos.
+            </p>
+            <p>
+              Costumo indicar esse cuidado para mulheres que desejam:
+            </p>
+            <ul className="grid grid-cols-1 gap-2 mt-2">
+              {[
+                "prevenir sinais do envelhecimento",
+                "suavizar aparência de cansaço facial",
+                "estimular firmeza e vitalidade da pele",
+                "manter uma rotina de autocuidado natural",
+                "promover rejuvenescimento facial de forma leve e natural"
+              ].map((ind: string) => (
+                <li key={ind} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{ind}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 mt-4 border-t border-earth-200 pt-6">
+            <p className="italic">
+              Cada pele tem sua própria história. Por isso, realizo o atendimento respeitando as características e necessidades individuais de cada mulher.
+            </p>
+            <p className="text-2xl font-serif text-sage-800 italic font-bold mt-2 text-center">
+              Entre um toque e outro… o bem-estar acontece.
+            </p>
+          </div>
+
+          <WhatsAppButton className="w-fit mt-4" />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=1000" 
+            alt="Lifting Facial Manual" 
+            className="w-full aspect-[4/5] object-cover" 
+            referrerPolicy="no-referrer" 
+          />
+        </motion.div>
+      </div>
+    </div>
+  </div>
+);
+
+const DrenagemLinfaticaPage = () => (
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Drenagem Linfática Manual</h1>
+          
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <p>
+              A Drenagem Linfática Manual é uma técnica realizada através de movimentos suaves, ritmados e precisos que utilizo para estimular o sistema linfático e ajudar o corpo a eliminar líquidos acumulados e toxinas de forma natural.
+            </p>
+            <p>
+              Muitas mulheres chegam até mim sentindo o corpo inchado, pesado ou com sensação de retenção de líquidos. E, muitas vezes, esse desconforto não afeta apenas a aparência, mas também a disposição, o conforto e o bem-estar no dia a dia.
+            </p>
+            <p>
+              Durante a sessão, realizo movimentos delicados e específicos que ajudam a ativar a circulação linfática, favorecendo o equilíbrio do organismo e proporcionando uma agradável sensação de leveza.
+            </p>
+            <p>
+              A Drenagem Linfática Manual vai além do cuidado estético. Ela é um atendimento terapêutico que pode auxiliar no funcionamento natural do corpo, melhorar a circulação e contribuir para mais conforto físico e bem-estar.
+            </p>
+            <p>
+              Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada sessão de forma personalizada, respeitando o momento e as necessidades individuais de cada mulher.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+            <ul className="grid grid-cols-1 gap-2">
+              {[
+                "reduz inchaços e retenção de líquidos",
+                "melhora a circulação",
+                "auxilia na eliminação de toxinas",
+                "promove sensação de leveza no corpo",
+                "ajuda na prevenção de edemas",
+                "favorece o equilíbrio do organismo",
+                "contribui para mais conforto e bem-estar"
+              ].map((b: string) => (
+                <li key={b} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Indicações:</h3>
+            <p>
+              A Drenagem Linfática Manual pode ser indicada para mulheres que desejam melhorar a circulação e aliviar desconfortos relacionados ao acúmulo de líquidos e sensação de peso no corpo.
+            </p>
+            <p>
+              Costumo realizar esse atendimento em situações como:
+            </p>
+            <ul className="grid grid-cols-1 gap-2 mt-2">
+              {[
+                "edemas",
+                "lipedema",
+                "pré e pós-operatório",
+                "pós-parto",
+                "retenção de líquidos",
+                "sensação de peso e inchaço",
+                "necessidade de estímulo circulatório"
+              ].map((ind: string) => (
+                <li key={ind} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{ind}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 mt-4 border-t border-earth-200 pt-6">
+            <p className="italic">
+              Cada corpo tem suas próprias necessidades. Por isso, antes de cada atendimento, observo com atenção o seu momento para conduzir a sessão com cuidado, segurança e individualidade.
+            </p>
+            <p className="text-2xl font-serif text-sage-800 italic font-bold mt-2 text-center">
+              Entre um toque e outro… o bem-estar acontece.
+            </p>
+          </div>
+
+          <WhatsAppButton className="w-fit mt-4" />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" 
+            alt="Drenagem Linfática Manual" 
+            className="w-full aspect-[4/5] object-cover" 
+            referrerPolicy="no-referrer" 
+          />
+        </motion.div>
+      </div>
+    </div>
+  </div>
+);
+
+const ReflexologiaPodalPage = () => (
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <div>
+            <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Reflexologia Podal</span>
+            <h1 className="text-4xl md:text-5xl text-sage-800 font-bold mt-2">Reflexoterapia Podal</h1>
+          </div>
+          
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <p>
+              A Reflexoterapia Podal, também conhecida como Reflexologia Podal, é uma técnica terapêutica que realizo através da estimulação de pontos reflexos nos pés, buscando promover equilíbrio e bem-estar para o corpo como um todo.
+            </p>
+            <p>
+              Os pés possuem áreas reflexas ligadas a diferentes órgãos e sistemas do organismo. Ao estimular esses pontos com movimentos específicos e cuidadosos, procuro favorecer o equilíbrio corporal, aliviar tensões e estimular respostas naturais de relaxamento e autorregulação do corpo.
+            </p>
+            <p>
+              Muitas mulheres chegam até mim carregando não apenas dores físicas, mas também o cansaço mental e emocional acumulado pela rotina. E é justamente por isso que gosto de dizer que a reflexoterapia vai além do cuidado com os pés. Ela é um momento de pausa e reconexão.
+            </p>
+            <p>
+              Durante a sessão, observo com atenção as necessidades de cada mulher, conduzindo o atendimento de forma acolhedora e personalizada aqui no Espaço Anshin Massoterapia, em Ribeirão Pires.
+            </p>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+            <p className="text-lg leading-relaxed text-earth-800/80 mb-2">
+              A Reflexoterapia Podal pode contribuir para o equilíbrio do organismo e apoiar o bem-estar de forma complementar. Entre os benefícios mais percebidos estão:
+            </p>
+            <ul className="grid grid-cols-1 gap-2">
+              {[
+                "auxílio no alívio de dores de coluna",
+                "apoio no cuidado complementar da fibromialgia",
+                "melhora do funcionamento do sistema digestivo",
+                "relaxamento físico e mental",
+                "redução de tensões acumuladas",
+                "estímulo ao equilíbrio emocional",
+                "sensação de bem-estar e leveza"
+              ].map((b: string) => (
+                <li key={b} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Indicações:</h3>
+            <p>
+              Costumo indicar a Reflexoterapia Podal como um cuidado complementar para mulheres que buscam mais equilíbrio e conforto no dia a dia. Ela pode ser uma excelente aliada em situações como:
+            </p>
+            <ul className="grid grid-cols-1 gap-2 mt-2">
+              {[
+                "dores de coluna",
+                "enxaquecas",
+                "insônia",
+                "tensões musculares e emocionais",
+                "alterações digestivas",
+                "sobrecarga emocional",
+                "estresse e dificuldade para relaxar"
+              ].map((ind: string) => (
+                <li key={ind} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{ind}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 mt-4 border-t border-earth-200 pt-6">
+            <p className="italic">
+              Cada corpo responde de uma forma e carrega sua própria história. Por isso, realizo cada sessão com presença, escuta e respeito ao momento de cada mulher.
+            </p>
+            <p className="text-2xl font-serif text-sage-800 italic font-bold mt-2 text-center">
+              Entre um toque e outro… o bem-estar acontece.
+            </p>
+          </div>
+
+          <WhatsAppButton className="w-fit mt-4" />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        >
+          <img 
+            src="https://res.cloudinary.com/dplhygs4v/image/upload/v1779149728/roseli_martins_massagem_em_ribeirao_pires_wvrwrc.png" 
+            alt="Reflexoterapia Podal" 
+            className="w-full aspect-[4/5] object-cover" 
+            referrerPolicy="no-referrer" 
+          />
+        </motion.div>
+      </div>
+    </div>
+  </div>
+);
+
+const MassagensPage = () => {
+  const [activeTab, setActiveTab] = React.useState('sniper');
+
+  const sniperInfo = {
+    title: "Massagem Relaxante — Método Sniper",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000",
+    paragraphs: [
+      "A Massagem Relaxante — Método Sniper é uma técnica direcionada e precisa que realizo com foco em pontos específicos de dor, tensão e sobrecarga muscular.",
+      "Muitas vezes, o corpo acumula tensões silenciosas que aparecem principalmente nos ombros, pescoço e região lombar. E quando essas tensões permanecem por muito tempo, podem afetar não apenas o conforto físico, mas também o humor, o sono e a disposição.",
+      "Durante esse atendimento, utilizo manobras específicas para localizar e trabalhar áreas de maior rigidez muscular, ajudando o corpo a relaxar de forma mais profunda e direcionada.",
+      "Gosto de enxergar essa massagem como um cuidado para quem vive em ritmo intenso e sente o peso da rotina no próprio corpo.",
+      "Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada sessão respeitando o momento e as necessidades individuais de cada mulher."
+    ],
+    benefitsIntro: "A Massagem Relaxante — Método Sniper pode ajudar a promover relaxamento e mais equilíbrio para o corpo. Entre os benefícios mais percebidos estão:",
+    benefits: [
+      "redução do estresse e da ansiedade",
+      "alívio de tensões musculares",
+      "melhora da circulação",
+      "melhora da mobilidade",
+      "relaxamento profundo",
+      "equilíbrio físico e emocional",
+      "sensação de leveza e bem-estar"
+    ],
+    indicationsIntro: "Costumo indicar esse atendimento para mulheres que convivem com tensão muscular e sobrecarga física ou emocional. Pode ser especialmente indicado para:",
+    indications: [
+      "rotinas intensas",
+      "cansaço físico e mental",
+      "sobrecarga muscular",
+      "tensão nos ombros",
+      "dores no pescoço",
+      "desconfortos lombares",
+      "dificuldade para relaxar"
+    ],
+    outro: "Cada corpo responde de uma forma. Por isso, conduzo o atendimento de maneira personalizada, buscando entender onde o corpo mais precisa de cuidado."
+  };
+
+  const doterraInfo = {
+    title: "Massagem Relaxante Aromática dōTERRA",
+    image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=1000",
+    paragraphs: [
+      "A Massagem Relaxante Aromática dōTERRA é um atendimento que une técnicas relaxantes com a aplicação de óleos essenciais dōTERRA, escolhidos de forma personalizada para proporcionar uma experiência profunda de cuidado e bem-estar.",
+      "Acredito que o toque e os aromas possuem um grande poder de acolhimento. Por isso, durante essa sessão, combino movimentos suaves e relaxantes com óleos essenciais selecionados de acordo com o momento e as necessidades de cada mulher. O resultado é uma experiência que envolve corpo e emoções.",
+      "Além do relaxamento físico, muitas mulheres relatam sensação de calma, leveza e desaceleração mental após o atendimento.",
+      "Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada sessão com atenção, presença e cuidado individualizado."
+    ],
+    benefitsIntro: "A Massagem Relaxante Aromática dōTERRA pode ajudar a promover equilíbrio e relaxamento profundo. Entre os benefícios mais percebidos estão:",
+    benefits: [
+      "potencializa o relaxamento",
+      "auxilia no alívio de dores e tensões",
+      "pode apoiar o cuidado de inflamações",
+      "promove equilíbrio emocional",
+      "reduz estresse e ansiedade",
+      "melhora a sensação de bem-estar",
+      "proporciona relaxamento físico e mental"
+    ],
+    indicationsIntro: "Costumo indicar esse atendimento para mulheres que desejam desacelerar e viver um momento de autocuidado mais profundo. Pode ser especialmente indicada para quem busca:",
+    indications: [
+      "relaxamento corporal",
+      "acalmar a mente",
+      "reduzir o estresse",
+      "melhorar o humor",
+      "equilíbrio emocional",
+      "reconexão consigo mesma",
+      "momentos de pausa e bem-estar"
+    ],
+    outro: "Cada aroma desperta sensações diferentes. Por isso, escolho os óleos essenciais com cuidado, respeitando o que seu corpo e seu momento pedem."
+  };
+
+  const info = activeTab === 'sniper' ? sniperInfo : doterraInfo;
+
+  return (
+    <div className="pt-48 pb-24 px-6">
+      <div className="max-w-[80%] mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Tipos de Massagem</span>
+          <h1 className="text-4xl md:text-5xl font-serif text-sage-800 mt-2 font-bold">Massagens Relaxantes</h1>
+          <p className="text-earth-800/60 mt-4 max-w-xl mx-auto">
+            Descubra as duas abordagens exclusivas que desenvolvi para acolher suas necessidades de relaxamento e alívio de dores musculares.
+          </p>
+          
+          <div className="flex justify-center gap-4 mt-8">
+            <button 
+              onClick={() => setActiveTab('sniper')}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === 'sniper' ? 'bg-sage-800 text-white shadow-lg' : 'bg-earth-100 text-earth-800 hover:bg-earth-200'}`}
+            >
+              Método Sniper
+            </button>
+            <button 
+              onClick={() => setActiveTab('doterra')}
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === 'doterra' ? 'bg-sage-800 text-white shadow-lg' : 'bg-earth-100 text-earth-800 hover:bg-earth-200'}`}
+            >
+              Aromática dōTERRA
+            </button>
+          </div>
         </div>
 
-        {indications && (
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xl font-serif text-sage-800 font-bold">Indicado para:</h3>
-            <div className="flex flex-wrap gap-2">
-              {indications.map((ind: string) => (
-                <span key={ind} className="bg-earth-100 px-4 py-2 rounded-full text-sm">{ind}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start mt-12">
+          <motion.div 
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex flex-col gap-8"
+          >
+            <h2 className="text-3xl md:text-4xl text-sage-800 font-bold font-serif">{info.title}</h2>
+            
+            <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+              {info.paragraphs.map((p, index) => (
+                <p key={index}>{p}</p>
               ))}
             </div>
+            
+            <div className="flex flex-col gap-4">
+              <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+              <p className="text-lg leading-relaxed text-earth-800/80 mb-2">
+                {info.benefitsIntro}
+              </p>
+              <ul className="grid grid-cols-1 gap-2">
+                {info.benefits.map((b: string) => (
+                  <li key={b} className="flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-sage-600 animate-pulse" />
+                    <span className="text-lg text-earth-800/95">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+              <h3 className="text-xl font-serif text-sage-800 font-bold">Indicações:</h3>
+              <p>
+                {info.indicationsIntro}
+              </p>
+              <ul className="grid grid-cols-1 gap-2 mt-2">
+                {info.indications.map((ind: string) => (
+                  <li key={ind} className="flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-sage-600" />
+                    <span className="text-lg text-earth-800/95">{ind}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 mt-4 border-t border-earth-200 pt-6">
+              <p className="italic">
+                {info.outro}
+              </p>
+              <p className="text-2xl font-serif text-sage-800 italic font-bold mt-2 text-center">
+                Entre um toque e outro… o bem-estar acontece.
+              </p>
+            </div>
+
+            <WhatsAppButton className="w-fit mt-4" />
+          </motion.div>
+
+          <motion.div 
+            key={`${activeTab}-image`}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+            className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          >
+            <img 
+              src={info.image} 
+              alt={info.title} 
+              className="w-full aspect-[4/5] object-cover" 
+              referrerPolicy="no-referrer" 
+            />
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const QuickMassagePage = () => (
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Quick Massage — Método Sniper</h1>
+          
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <p>
+              A Quick Massage — Método Sniper é um atendimento realizado em cadeira ergonômica, pensado para proporcionar alívio rápido de tensões e dores do dia a dia, sem necessidade de trocar de roupa.
+            </p>
+            <p>
+              Essa é uma técnica prática e direcionada que realizo com duração entre 10 e 20 minutos, focando principalmente regiões que costumam acumular tensão, como ombros, pescoço, costas e lombar.
+            </p>
+            <p>
+              Muitas vezes, o corpo pede uma pausa antes mesmo de percebermos. A rotina intensa, longos períodos sentada, excesso de responsabilidades e estresse acabam deixando marcas no corpo que se manifestam como rigidez, desconforto e cansaço físico.
+            </p>
+            <p>
+              A proposta da Quick Massage — Método Sniper é justamente oferecer um cuidado rápido, eficiente e acessível, capaz de aliviar essas tensões in poucos minutos.
+            </p>
+            <p>
+              Mesmo sendo um atendimento de curta duração, o toque direcionado e preciso pode trazer uma agradável sensação de leveza, relaxamento e renovação da energia.
+            </p>
+            <p>
+              Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada atendimento respeitando o momento e as necessidades individuais de cada pessoa.
+            </p>
+            <p>
+              Além do atendimento individual, a Quick Massage também pode ser uma excelente opção para ações corporativas, eventos e ambientes profissionais que desejam promover mais bem-estar e qualidade de vida.
+            </p>
           </div>
-        )}
+          
+          <div className="flex flex-col gap-4">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Benefícios:</h3>
+            <p className="text-lg leading-relaxed text-earth-800/80 mb-2">
+              A Quick Massage — Método Sniper foi desenvolvida para proporcionar resultados rápidos e sensação imediata de bem-estar. Entre os benefícios mais percebidos estão:
+            </p>
+            <ul className="grid grid-cols-1 gap-2">
+              {[
+                "redução rápida das tensões musculares",
+                "melhora da disposição",
+                "sensação de leveza em poucos minutos",
+                "alívio de dores e desconfortos",
+                "relaxamento físico e mental",
+                "melhora da circulação",
+                "pausa restauradora para o corpo"
+              ].map((b: string) => (
+                <li key={b} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <WhatsAppButton className="w-fit" label={ctaLabel} />
-      </motion.div>
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80">
+            <h3 className="text-xl font-serif text-sage-800 font-bold">Indicações:</h3>
+            <p>
+              Costumo indicar a Quick Massage para pessoas que precisam de um momento rápido de cuidado e alívio das tensões do cotidiano. Ela pode ser especialmente indicada para:
+            </p>
+            <ul className="grid grid-cols-1 gap-2 mt-2">
+              {[
+                "pausas durante o dia",
+                "rotinas intensas",
+                "ambientes corporativos",
+                "eventos e ações de bem-estar",
+                "tensão nos ombros e pescoço",
+                "dores relacionadas ao estresse",
+                "necessidade de relaxamento rápido"
+              ].map((ind: string) => (
+                <li key={ind} className="flex items-center gap-2">
+                  <CheckCircle2 size={16} className="text-sage-600" />
+                  <span className="text-lg text-earth-800/90">{ind}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 mt-4 border-t border-earth-200 pt-6">
+            <p className="italic">
+              Muitas vezes, poucos minutos de cuidado já fazem diferença na forma como o corpo e a mente seguem o restante do dia.
+            </p>
+            <p className="text-2xl font-serif text-sage-800 italic font-bold mt-2 text-center">
+              Entre um toque e outro… o bem-estar acontece.
+            </p>
+          </div>
+
+          <WhatsAppButton className="w-fit mt-4" />
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        >
+          <img 
+            src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" 
+            alt="Quick Massage — Método Sniper" 
+            className="w-full aspect-[4/5] object-cover" 
+            referrerPolicy="no-referrer" 
+          />
+        </motion.div>
+      </div>
+    </div>
+  </div>
+);
+
+const TerapiasIntegrativasPage = () => (
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
       <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex flex-col gap-12"
       >
-        <img src={image} alt={title} className="w-full aspect-[4/5] object-cover" referrerPolicy="no-referrer" />
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto">
+          <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Terapias Integrativas</span>
+          <h1 className="text-4xl md:text-5xl text-sage-800 font-bold mt-2 font-serif">Terapias Integrativas</h1>
+          <p className="text-xl text-sage-700 italic mt-2">Protocolos complementares para um cuidado ainda mais personalizado</p>
+        </div>
+        
+        {/* Intro Paragraphs */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg leading-relaxed text-earth-800/80 max-w-5xl mx-auto">
+          <div className="flex flex-col gap-4">
+            <p>
+              Acredito que cada corpo tem suas próprias necessidades e responde de uma forma única ao cuidado terapêutico.
+            </p>
+            <p>
+              Por isso, aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, os atendimentos podem integrar diferentes recursos e técnicas complementares, sempre respeitando o momento e as necessidades de cada mulher.
+            </p>
+            <p>
+              Esses protocolos não são aplicados de forma automática.
+            </p>
+          </div>
+          <div className="flex flex-col gap-4">
+            <p>
+              Eles podem ser incorporados às sessões conforme avaliação e indicação profissional, com o objetivo de ampliar o conforto, potencializar o relaxamento e promover uma experiência ainda mais acolhedora e personalizada.
+            </p>
+            <p>
+              Mais do que seguir um atendimento padronizado, gosto de observar com atenção o que o corpo está comunicando.
+            </p>
+            <p>
+              É dessa escuta que nasce um cuidado verdadeiramente integrativo.
+            </p>
+          </div>
+        </div>
+
+        {/* Protocolos Complementares Section */}
+        <div className="flex flex-col gap-8 mt-6">
+          <div className="text-center">
+            <h2 className="text-3xl font-serif text-sage-800 font-bold">Protocolos Complementares</h2>
+            <div className="h-0.5 w-24 bg-sage-300 mx-auto mt-2"></div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto w-full">
+            {[
+              {
+                title: "Pedras Quentes",
+                image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600",
+                desc: "As pedras quentes podem ser utilizadas como recurso complementar para proporcionar relaxamento profundo e conforto muscular. O calor ajuda a relaxar regiões de tensão, favorecendo sensação de acolhimento e bem-estar durante a sessão."
+              },
+              {
+                title: "Manta Térmica",
+                image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=600",
+                desc: "A manta térmica pode ser incorporada ao atendimento para promover aquecimento corporal e maior sensação de conforto. Esse recurso auxilia o relaxamento e pode complementar protocolos terapêuticos e corporais conforme necessidade."
+              },
+              {
+                title: "Escalda-pés",
+                image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=600",
+                desc: "O escalda-pés é um momento simples e profundamente acolhedor. A água morna associada aos cuidados terapêuticos ajuda o corpo a desacelerar e pode favorecer sensação de relaxamento, descanso e reconexão consigo mesma. Muitas mulheres relatam que esse momento já inicia o processo de pausa e bem-estar."
+              },
+              {
+                title: "Aromaterapia",
+                subtitle: "com óleos essenciais dōTERRA",
+                image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=600",
+                desc: "A aromaterapia com óleos essenciais dōTERRA pode ser integrada aos atendimentos para complementar a experiência terapêutica. Os aromas são escolhidos de forma personalizada e podem contribuir para relaxamento, conforto emocional e sensação de equilíbrio e acolhimento. Acredito que o aroma também conversa com o corpo e pode tornar o cuidado ainda mais especial."
+              }
+            ].map((p, idx) => (
+              <div key={idx} className="bg-white rounded-3xl overflow-hidden border border-earth-100 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+                <div className="aspect-square overflow-hidden">
+                  <img 
+                    src={p.image} 
+                    alt={p.title} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="p-8 flex flex-col flex-grow gap-2">
+                  <h4 className="text-xl font-bold text-sage-800 font-serif">
+                    {p.title}
+                  </h4>
+                  {p.subtitle && (
+                    <span className="text-xs font-sans text-sage-600 font-bold tracking-wider uppercase -mt-1 block">
+                      {p.subtitle}
+                    </span>
+                  )}
+                  <p className="text-base text-earth-800/80 leading-relaxed mt-2">{p.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Atendimento Integrativo Section */}
+        <div className="bg-sage-50/50 rounded-3xl p-8 md:p-12 border border-sage-100 max-w-5xl mx-auto w-full mt-8 flex flex-col gap-6 text-center">
+          <h3 className="text-3xl font-serif text-sage-800 font-bold">Atendimento Integrativo</h3>
+          
+          <div className="flex flex-col gap-4 text-lg leading-relaxed text-earth-800/80 max-w-3xl mx-auto">
+            <p>
+              Aqui no ANSHIN, cada atendimento é realizado de forma personalizada.
+            </p>
+            <p>
+              Isso significa que observo com atenção as necessidades do seu corpo para integrar técnicas e protocolos complementares de maneira ética, cuidadosa e respeitosa.
+            </p>
+            <p>
+              Meu propósito não é oferecer sessões padronizadas. É construir um cuidado que faça sentido para o seu momento.
+            </p>
+            <p>
+              A massoterapia, as terapias integrativas e os protocolos complementares caminham juntos para promover conforto, relaxamento e uma experiência de bem-estar mais completa.
+            </p>
+            <p>
+              Porque acredito que cuidar do corpo também é cuidar da forma como você se sente.
+            </p>
+          </div>
+
+          <div className="mt-6 border-t border-sage-200/50 pt-8">
+            <p className="text-3xl font-serif text-sage-800 italic font-bold">
+              Entre um toque e outro… o bem-estar acontece.
+            </p>
+          </div>
+        </div>
+
+        {/* Center Booking Action */}
+        <div className="flex justify-center mt-4">
+          <WhatsAppButton className="w-fit" />
+        </div>
       </motion.div>
     </div>
   </div>
 );
 
 const About = () => (
-  <div className="pt-32 section-padding">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
       <div className="rounded-3xl overflow-hidden shadow-2xl">
         <img 
-          src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=1000" 
+          src="https://res.cloudinary.com/dplhygs4v/image/upload/v1779143638/sobre_mim_roseli_martins-massoterapia_labwqu.jpg" 
           alt="Roseli Martiñs" 
           className="w-full aspect-square object-cover"
           referrerPolicy="no-referrer"
@@ -1029,18 +1766,17 @@ const About = () => (
       <div className="flex flex-col gap-8">
         <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Cuidado, experiência e dedicação ao bem-estar feminino</h1>
         <p className="text-lg leading-relaxed">
-          Roseli Martiñs é massoterapeuta e reflexoterapeuta dedicada ao cuidado da saúde e do equilíbrio do corpo feminino. Seu trabalho une conhecimento técnico, sensibilidade terapêutica e um atendimento acolhedor, focado nas necessidades individuais de cada mulher.
+          Me chamo Roseli Martiñs, sou massoterapeuta e reflexoterapeuta dedicada ao cuidado da saúde e do equilíbrio do corpo feminino. Meu trabalho une conhecimento técnico, sensibilidade terapêutica e um atendimento acolhedor, focado nas necessidades individuais de cada mulher.
         </p>
-        <p>
-          Ao longo de sua trajetória, desenvolveu um atendimento que une conhecimento técnico, sensibilidade terapêutica e cuidado individual. Seu propósito é ajudar mulheres a viverem com mais leveza, saúde e energia.
+        <p className="text-lg leading-relaxed">
+          Ao longo de minha trajetória, desenvolvi um atendimento que une conhecimento técnico, sensibilidade terapêutica e cuidado individual. Meu propósito é ajudar mulheres a viverem com mais leveza, saúde e energia através dos serviços:
         </p>
         <div className="flex flex-col gap-4">
-          <h3 className="text-xl font-serif text-sage-800 font-bold">Especializações:</h3>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {['Reflexoterapia podal', 'Drenagem linfática', 'Massagem terapêutica', 'Aromaterapia', 'Lifting facial manual'].map(s => (
               <li key={s} className="flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-sage-600" />
-                <span>{s}</span>
+                <span className="text-lg">{s}</span>
               </li>
             ))}
           </ul>
@@ -1103,40 +1839,175 @@ const ResultsPage = () => (
 );
 
 const ProductsPage = () => (
-  <div className="pt-32 pb-24">
-    <div className="max-w-[80%] mx-auto px-6">
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
+      {/* Hero Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-        <div className="flex flex-col gap-8">
-          <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Aromaterapia</span>
-          <h1 className="text-4xl md:text-6xl font-serif text-sage-800 font-bold">Produtos doTerra</h1>
-          <p className="text-lg leading-relaxed text-earth-800/80">
-            A dōTERRA oferece os óleos essenciais mais puros e potentes do mundo. Em meus atendimentos, utilizo esses óleos para potencializar os resultados terapêuticos e proporcionar uma experiência sensorial completa.
-          </p>
-          <div className="flex flex-col gap-4">
-            <h3 className="text-xl font-serif text-sage-800 font-bold">Por que dōTERRA?</h3>
-            <ul className="grid grid-cols-1 gap-3">
-              {[
-                'Pureza garantida (CPTG)',
-                'Extração ética e sustentável',
-                'Potencializa o relaxamento e alívio de dores',
-                'Suporte emocional e físico natural'
-              ].map(item => (
-                <li key={item} className="flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-sage-600" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-8"
+        >
+          <div className="flex flex-col gap-2">
+            <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Consultora Oficial dōTERRA</span>
+            <h1 className="text-4xl md:text-6xl font-serif text-sage-800 font-bold">Aromaterapia & Bem-estar</h1>
+            <p className="text-xl text-sage-700 italic">Sinta o poder da natureza em sua forma mais pura</p>
           </div>
-          <WhatsAppButton label="Quero conhecer os produtos" />
-        </div>
-        <div className="rounded-3xl overflow-hidden shadow-2xl">
+          
+          <p className="text-lg leading-relaxed text-earth-800/80">
+            A dōTERRA é líder mundial em óleos essenciais de grau terapêutico. Em meus atendimentos no Espaço Anshin Massoterapia, em Ribeirão Pires, utilizo esses recursos naturais preciosos para ampliar o relaxamento, aliviar tensões físicas e promover o equilíbrio emocional.
+          </p>
+          
+          <div className="flex flex-wrap gap-4 mt-2">
+            <a 
+              href="https://office.doterra.com/roselimartins/#/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-8 py-4 bg-sage-800 hover:bg-sage-900 text-white rounded-full font-medium transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2 text-center"
+            >
+              Quero Conhecer os Produtos
+            </a>
+            <WhatsAppButton label="Falar com Roseli" className="w-fit" />
+          </div>
+        </motion.div>
+        
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="rounded-3xl overflow-hidden shadow-2xl relative"
+        >
           <img 
             src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=1000" 
-            alt="Óleos Essenciais doTerra" 
-            className="w-full aspect-square object-cover"
+            alt="Óleos Essenciais dōTERRA" 
+            className="w-full aspect-[4/3] object-cover"
             referrerPolicy="no-referrer"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-earth-900/40 to-transparent"></div>
+          <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur px-4 py-2 rounded-full border border-earth-100 shadow-lg text-xs font-bold text-sage-800 uppercase tracking-widest">
+            Selo CPTG de Pureza
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Pureza e Diferencial CPTG */}
+      <div className="bg-earth-50/50 border border-earth-100 rounded-3xl p-8 md:p-12 mb-24 grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="flex flex-col gap-3">
+          <h3 className="text-xl font-bold text-sage-800 font-serif">O que são Óleos Essenciais?</h3>
+          <p className="text-earth-800/80 leading-relaxed">
+            Compostos aromáticos naturais altamente concentrados extraídos de sementes, cascas, raízes e flores. Eles possuem propriedades terapêuticas poderosas que apoiam o funcionamento do corpo e promovem a autocura.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <h3 className="text-xl font-bold text-sage-800 font-serif">Pureza Garantida (CPTG)</h3>
+          <p className="text-earth-800/80 leading-relaxed">
+            Cada óleo dōTERRA passa pelo rigoroso Certificado de Pureza Testada e Garantida. Isso atesta que o óleo é 100% puro, livre de substâncias sintéticas, pesticidas, aditivos ou qualquer tipo de contaminação.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3">
+          <h3 className="text-xl font-bold text-sage-800 font-serif">Extração Sustentável</h3>
+          <p className="text-earth-800/80 leading-relaxed">
+            Através do programa Co-Impact Sourcing®, a dōTERRA colhe as plantas em seus habitats nativos globais, garantindo a maior potência terapêutica dos óleos e apoiando de forma justa as comunidades de agricultores parceiros.
+          </p>
+        </div>
+      </div>
+
+      {/* Principais Óleos Usados em Sessão */}
+      <div className="flex flex-col gap-12 mb-24">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Os Favoritos do Espaço Anshin</span>
+          <h2 className="text-3xl md:text-4xl text-sage-800 font-bold font-serif mt-2">Os Óleos Essenciais Mais Usados</h2>
+          <p className="text-earth-800/60 mt-4">
+            Em cada sessão de massoterapia ou aromaterapia, seleciono o óleo essencial que mais atende ao seu momento físico e emocional.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              name: "Lavanda (Lavender)",
+              tagline: "O Óleo do Relaxamento",
+              desc: "Promove calma profunda, ajuda a aliviar sentimentos de ansiedade, estresse e contribui para um sono reparador e de alta qualidade.",
+              benefit: "Relaxamento mental e muscular"
+            },
+            {
+              name: "Hortelã-pimenta (Peppermint)",
+              tagline: "Energia & Respiração",
+              desc: "Refrescante e energizante, ajuda a aliviar tensões musculares, dores de cabeça e promove vias aéreas livres e respiração profunda.",
+              benefit: "Revitalização e alívio de tensões"
+            },
+            {
+              name: "Limão Siciliano (Lemon)",
+              tagline: "Clareza & Foco",
+              desc: "Estimulante e purificador natural. Ele melhora o humor, auxilia o foco mental, promove energia positiva e atua no suporte imunológico.",
+              benefit: "Humor elevado e bem-estar"
+            },
+            {
+              name: "Deep Blue® (Mix de Óleos)",
+              tagline: "Alívio Muscular Profundo",
+              desc: "Uma formulação de óleos com propriedades calmantes e reconfortantes, perfeita para acalmar articulações doloridas e tensões intensas.",
+              benefit: "Alívio imediato da rigidez"
+            }
+          ].map((oil, idx) => (
+            <div key={idx} className="bg-white border border-earth-100 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between">
+              <div className="flex flex-col gap-3">
+                <span className="text-sage-600 font-bold text-xs uppercase tracking-wider">{oil.tagline}</span>
+                <h4 className="text-lg font-bold text-sage-800 font-serif">{oil.name}</h4>
+                <p className="text-sm text-earth-800/80 leading-relaxed">{oil.desc}</p>
+              </div>
+              <div className="border-t border-earth-100 pt-4 mt-6">
+                <span className="text-xs font-bold text-sage-800 bg-sage-50 px-3 py-1 rounded-full">{oil.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Como Adquirir / Cadastrar */}
+      <div className="bg-sage-800 text-white rounded-3xl p-8 md:p-16 flex flex-col lg:flex-row items-center gap-12 justify-between">
+        <div className="flex flex-col gap-6 lg:max-w-xl">
+          <span className="text-sage-200 font-bold uppercase tracking-[0.2em] text-xs">Oportunidade Especial</span>
+          <h2 className="text-3xl md:text-5xl font-serif font-bold">Compre com 25% de Desconto</h2>
+          <p className="text-sage-100 text-lg leading-relaxed">
+            Como cliente preferencial cadastrado sob minha indicação, você garante um desconto exclusivo de 25% em todos os produtos dōTERRA, além de participar do programa de fidelidade para acumular pontos e ganhar óleos grátis.
+          </p>
+          <ul className="flex flex-col gap-3 text-sage-100">
+            <li className="flex items-center gap-2">
+              <CheckCircle2 size={16} className="text-sage-300" />
+              <span>Sem obrigação de compra mensal</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 size={16} className="text-sage-300" />
+              <span>Apoio e consultoria personalizada da Roseli Martins</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <CheckCircle2 size={16} className="text-sage-300" />
+              <span>Entrega direta na sua casa em Ribeirão Pires ou qualquer localidade</span>
+            </li>
+          </ul>
+        </div>
+        <div className="bg-white/10 backdrop-blur border border-white/20 p-8 rounded-3xl flex flex-col gap-6 w-full lg:max-w-sm text-center">
+          <h4 className="text-xl font-bold font-serif text-white">Quero me Cadastrar</h4>
+          <p className="text-sm text-sage-100">
+            Acesse o portal de consultora de Roseli Martins ou envie uma mensagem no WhatsApp para realizarmos o seu cadastro de forma segura!
+          </p>
+          <div className="flex flex-col gap-3">
+            <a 
+              href="https://office.doterra.com/roselimartins/#/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="py-3 px-6 bg-white text-sage-800 rounded-full font-bold hover:bg-sage-50 transition-all duration-300 shadow-md text-center"
+            >
+              Acessar Site dōTERRA da Roseli
+            </a>
+            <a 
+              href="https://wa.me/5511973685934?text=Ol%C3%A1%2C%20Roseli!%20Gostaria%20de%20saber%20mais%20sobre%20os%20%C3%B3leos%20d%C5%8DTERRA%20e%20como%20comprar%20com%20desconto." 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="py-3 px-6 bg-transparent border border-white text-white rounded-full font-bold hover:bg-white/10 transition-all duration-300 text-center"
+            >
+              Falar no WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1144,24 +2015,44 @@ const ProductsPage = () => (
 );
 
 const NossoEspaco = () => (
-  <div className="pt-32 pb-24">
-    <div className="max-w-[80%] mx-auto px-6">
+  <div className="pt-48 pb-24 px-6">
+    <div className="max-w-[80%] mx-auto">
       <div className="text-center mb-16">
         <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">O Ambiente</span>
-        <h1 className="text-4xl md:text-6xl font-serif text-sage-800 mt-4 font-bold">Nosso Espaço</h1>
-        <p className="text-earth-800/60 mt-4 max-w-2xl mx-auto">
-          Um refúgio de tranquilidade e cuidado, projetado exclusivamente para proporcionar o máximo conforto e relaxamento durante seus atendimentos.
-        </p>
+        <h1 className="text-4xl md:text-6xl font-serif text-sage-800 mt-4 mb-8 font-bold">Nosso Espaço</h1>
+        <div className="max-w-3xl mx-auto flex flex-col gap-6 text-earth-800/80 text-lg leading-relaxed text-justify md:text-center">
+          <p className="text-xl text-sage-800 font-serif italic font-semibold">
+            "Quero que, quando você chegar aqui, sinta que encontrou um lugar onde pode desacelerar."
+          </p>
+          <p>
+            O Espaço Anshin Massoterapia foi preparado com carinho para ser um ambiente de acolhimento, cuidado e bem-estar feminino. Mais do que um local de atendimento, esse é um espaço pensado para que você se sinta confortável, segura e tranquila durante cada sessão.
+          </p>
+          <p>
+            Acredito que o cuidado começa antes mesmo do toque. Por isso, mantenho um ambiente aconchegante, organizado e cuidadosamente higienizado, onde cada detalhe foi pensado para proporcionar conforto e relaxamento. A iluminação suave, os aromas e a atmosfera acolhedora ajudam o corpo a desacelerar e a entrar em um estado mais profundo de relaxamento e equilíbrio.
+          </p>
+          <p>
+            Aqui, cada atendimento acontece de forma reservada e personalizada. Seja para massagem terapêutica, drenagem linfática, reflexoterapia podal, aromaterapia ou lifting facial manual, preparo cada sessão respeitando o momento e as necessidades do seu corpo.
+          </p>
+          <p>
+            Meu propósito é que você encontre não apenas um atendimento de massoterapia em Ribeirão Pires, mas um espaço onde possa pausar, respirar e cuidar de si mesma com presença e tranquilidade. O cuidado com a limpeza, organização e higienização do ambiente também faz parte da experiência, porque acredito que bem-estar e segurança caminham juntos.
+          </p>
+          <p>
+            Quero que você se sinta acolhida do começo ao fim. Porque, muitas vezes, o que o corpo mais precisa é de um lugar onde possa finalmente relaxar.
+          </p>
+          <p className="text-2xl font-serif text-sage-800 italic mt-4 font-bold">
+            Entre um toque e outro… o bem-estar acontece.
+          </p>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {[
-          "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800",
-          "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=800"
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142819/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires1_cqzpf7.jpg",
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142826/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires2_xcrchn.jpg",
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142824/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires3_mfcznb.jpg",
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142826/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires4_sqopbb.jpg",
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142819/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires5_fx7d3g.jpg",
+          "https://res.cloudinary.com/dplhygs4v/image/upload/v1779142819/nosso_espa%C3%A7o_roseli_martins_massoterapia_em_ribeirao_pires6_idxhmk.jpg"
         ].map((img, i) => (
           <motion.div 
             key={i} 
@@ -1169,7 +2060,7 @@ const NossoEspaco = () => (
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="rounded-2xl overflow-hidden shadow-lg aspect-[4/3] card-hover"
+            className="rounded-2xl overflow-hidden shadow-lg aspect-[4/5] card-hover"
           >
             <img 
               src={img} 
@@ -1181,12 +2072,21 @@ const NossoEspaco = () => (
         ))}
       </div>
 
-      <div className="mt-20 bg-sage-800 text-white p-12 rounded-[40px] text-center">
-        <h2 className="text-2xl md:text-4xl font-serif mb-6 font-bold">Venha nos visitar</h2>
-        <p className="mb-8 text-sage-100 max-w-xl mx-auto">
-          Estamos localizados em Ribeirão Pires, prontos para te receber com todo o carinho e profissionalismo que você merece.
+      <div className="mt-20 bg-sage-800 text-white p-12 rounded-[40px] text-center flex flex-col items-center gap-6">
+        <h2 className="text-2xl md:text-4xl font-serif font-bold">Venha nos visitar</h2>
+        <p className="text-sage-100 max-w-xl">
+          Estamos prontos para te receber com todo o carinho e profissionalismo que você merece.
         </p>
-        <WhatsAppButton label="Agendar visita" className="bg-white text-sage-800 hover:bg-sage-50" />
+        <div className="bg-white/10 backdrop-blur-md px-6 py-4 rounded-2xl border border-white/20 max-w-2xl text-center">
+          <p className="font-semibold text-white text-lg">Nosso Endereço:</p>
+          <p className="text-sage-100 mt-1">
+            R. Dourados, 309 – Pouso Alegre (Ouro Fino) – Ribeirão Pires – SP
+          </p>
+          <p className="text-sage-200 text-sm mt-1 italic">
+            (Rua em frente ao McDonald's)
+          </p>
+        </div>
+        <WhatsAppButton label="Agendar visita" className="bg-white text-sage-800 hover:bg-sage-50 w-fit mt-2" />
       </div>
     </div>
   </div>
@@ -1331,12 +2231,12 @@ export default function App() {
             <Route path="/contato" element={<Contact />} />
             
             {/* Treatment Routes */}
-            <Route path="/servicos/lifting-facial" element={<TreatmentPage title="Lifting Facial Manual" description="Rejuvenescimento natural através do estímulo muscular." benefits={['Firmeza', 'Brilho', 'Relaxamento']} indications={['Rugas', 'Flacidez']} image="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=1000" />} />
-            <Route path="/servicos/drenagem-linfatica" element={<TreatmentPage title="Drenagem Linfática" description="Redução de inchaços e melhora do sistema circulatório." benefits={['Desintoxicação', 'Leveza']} indications={['Retenção', 'Celulite']} image="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" />} />
-            <Route path="/servicos/reflexologia-podal" element={<TreatmentPage title="Reflexologia Podal" description="Equilíbrio através de pontos estratégicos nos pés." benefits={['Alívio de estresse', 'Equilíbrio']} indications={['Insônia', 'Tensão']} image="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" />} />
-            <Route path="/servicos/massagem-relaxante" element={<TreatmentPage title="Massagem Relaxante" description="Um momento de pausa para relaxamento profundo." benefits={['Paz mental', 'Músculos soltos']} indications={['Estresse', 'Ansiedade']} image="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" />} />
-            <Route path="/servicos/quick-massage" element={<TreatmentPage title="Quick Massage" description="Massagem focada e revitalizante, ideal para alívio imediato de tensões. Perfeita para rotinas dinâmicas, disponível em pacotes individuais ou para ações em empresas e eventos locais." benefits={['Alívio imediato', 'Revitalização', 'Praticidade']} indications={['Tensões musculares', 'Estresse', 'Empresas e Eventos']} image="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" ctaLabel="Pacotes para Empresas e Grupos" />} />
-            <Route path="/servicos/terapias-integrativas" element={<TreatmentPage title="Terapias Integrativas" description="Cuidado holístico para a saúde integral da mulher." benefits={['Equilíbrio total', 'Conexão']} indications={['Saúde da mulher']} image="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000" />} />
+            <Route path="/servicos/lifting-facial" element={<LiftingFacialPage />} />
+            <Route path="/servicos/drenagem-linfatica" element={<DrenagemLinfaticaPage />} />
+            <Route path="/servicos/reflexologia-podal" element={<ReflexologiaPodalPage />} />
+            <Route path="/servicos/massagem-relaxante" element={<MassagensPage />} />
+            <Route path="/servicos/quick-massage" element={<QuickMassagePage />} />
+            <Route path="/servicos/terapias-integrativas" element={<TerapiasIntegrativasPage />} />
           </Routes>
         </main>
         <MapSection />
