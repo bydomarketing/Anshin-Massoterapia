@@ -778,29 +778,7 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Results Section - Before/After Sliders */}
-        <section className="section-padding bg-earth-50 mt-20 md:mt-32">
-          <div className="max-w-[80%] mx-auto">
-            <div className="text-center mb-16">
-              <span className="text-sage-600 font-bold uppercase tracking-[0.2em] text-xs">Resultados</span>
-              <h2 className="text-3xl md:text-5xl font-serif text-sage-800 mt-4">Transformações Reais</h2>
-              <p className="text-earth-800/60 mt-4 max-w-2xl mx-auto">Veja a diferença que o cuidado especializado pode fazer no seu corpo e rosto.</p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-              <BeforeAfterSlider 
-                before="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" 
-                after="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800"
-                label="Lifting Facial Manual"
-              />
-              <BeforeAfterSlider 
-                before="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800" 
-                after="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800"
-                label="Drenagem Linfática"
-              />
-            </div>
-          </div>
-        </section>
 
         {/* Testimonials */}
         <section className="bg-sage-800 text-white py-24 px-6 overflow-hidden relative">
