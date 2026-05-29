@@ -1,0 +1,20 @@
+# ----------------------------------------------------------------------
+# Anshin Massoterapia - Robots Configuration
+# ----------------------------------------------------------------------
+
+User-agent: *
+Allow: /
+
+# Bloquear acesso apenas ao que nao deve ser indexado
+Disallow: /admin
+Disallow: /test
+Disallow: /config
+Disallow: /hidden
+Disallow: /*.json$
+Disallow: /*.ts$
+Disallow: /*.tsx$
+Disallow: /*.env$
+Disallow: /*.git$
+
+# Sitemap link - Substitua se mudar o dominio
+Sitemap: https://anshin.bydomarketing.com.br/sitemap.xml
