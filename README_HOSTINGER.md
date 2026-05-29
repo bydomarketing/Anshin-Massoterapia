@@ -38,7 +38,7 @@ Para manter a separação total entre o código fonte (Dev) e o build final (Pro
 
 ## 4. Segurança e Hardening
 
-*   **Remoção de APIs:** Toda e qualquer chave sensível (ex: Gemini) foi removida do código para evitar exposição.
+
 *   **Separação Dev/Build:** Somente os arquivos compilados (`index.html`, `js/`, `css/`, `assets/`) são publicados. O código fonte nunca chega à web.
 *   **.htaccess Especializado:** Criado para garantir que rotas do React (SPA) funcionem sem erro 404, além de ativar compressão Gzip e cache.
 *   **Caminhos Relativos:** O projeto está configurado com `base: './'` no Vite para funcionar corretamente dentro de subdiretórios ou subdomínios.
