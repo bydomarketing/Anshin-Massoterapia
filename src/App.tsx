@@ -27,6 +27,15 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { SITE_CONFIG, TREATMENTS, TESTIMONIALS, FAQS } from './constants';
 
+// --- Scroll To Top ---
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+};
+
 // --- Components ---
 
 const BeforeAfterSlider = ({ before, after, label }: { before: string, after: string, label: string }) => {
@@ -50,7 +59,7 @@ const BeforeAfterSlider = ({ before, after, label }: { before: string, after: st
     <div className="flex flex-col items-center gap-4">
       <div 
         ref={containerRef}
-        className="relative w-full aspect-square rounded-2xl overflow-hidden cursor-col-resize select-none shadow-xl border border-earth-100"
+        className="relative w-full aspect-square rounded-2xl overflow-hidden cursor-col-resize select-none border border-earth-100"
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         onMouseDown={() => setIsResizing(true)}
@@ -126,7 +135,7 @@ const FloatingWhatsApp = () => (
       1
     </div>
     <span className="absolute right-full mr-4 bg-white text-sage-800 px-4 py-2 rounded-lg text-sm font-medium shadow-xl opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none border border-earth-100">
-      Fale com Roseli
+      Fale comigo
     </span>
   </a>
 );
@@ -212,7 +221,6 @@ const Navbar = () => {
     },
     { name: 'Resultados', path: '/resultados' },
     { name: 'Produtos doTerra', path: '/produtos-doterra' },
-    { name: 'Agendar', path: '/agendamento' },
     { name: 'Contato', path: '/contato' },
   ];
 
@@ -472,7 +480,7 @@ const Home = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=2000" 
+            src="https://res.cloudinary.com/dplhygs4v/image/upload/v1780006537/IMG_3676_anqiyh.jpg" 
             alt="Ambiente relaxante de massoterapia" 
             className="w-full h-full object-cover object-center"
             referrerPolicy="no-referrer"
@@ -495,10 +503,11 @@ const Home = () => {
                 </span>
               ))}
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-[64px] lg:text-[80px] leading-[1.1] text-white font-serif font-bold w-full max-w-none px-4 text-center">
+            <h1 className="text-[21px] sm:text-[34px] md:text-[45px] lg:text-[56px] leading-[1.1] text-white font-serif font-bold w-full max-w-none px-4 text-center">
               Roseli Martiñs | Massoterapia, <br />
               Drenagem Linfática, Reflexoterapia Podal, <br />
-              Aromaterapia em Ribeirão Pires-SP. <br />
+              Lifting Facial e Aromaterapia <br />
+              em Ribeirão Pires-SP. <br />
               <span className="animate-pulsar inline-block">Exclusivo para Mulheres</span>
             </h1>
             <p className="text-base sm:text-lg md:text-[25px] text-white/90 max-w-4xl font-light px-4 leading-relaxed">
@@ -552,7 +561,7 @@ const Home = () => {
             <img 
               src="https://res.cloudinary.com/dq1vvtg9v/image/upload/v1773590868/roseli_martins_massoterapia_em_ribeirao_pires_perto_de_mim53_c30i2s.jpg" 
               alt="Roseli Martiñs" 
-              className="max-h-full w-auto object-contain rounded-3xl shadow-2xl"
+              className="max-h-full w-auto object-contain rounded-3xl"
               referrerPolicy="no-referrer"
             />
           </div>
@@ -577,7 +586,7 @@ const Home = () => {
 
             <div className="relative h-[700px] md:h-[700px] flex items-center justify-center">
               {/* Central Circle */}
-              <div className="relative z-20 w-24 h-24 sm:w-32 sm:h-32 md:w-64 md:h-64 rounded-full bg-white shadow-2xl border-4 md:border-8 border-sage-100 flex items-center justify-center overflow-hidden group">
+              <div className="relative z-20 w-24 h-24 sm:w-32 sm:h-32 md:w-64 md:h-64 rounded-full bg-white border-4 md:border-8 border-sage-100 flex items-center justify-center overflow-hidden group">
                 <img 
                   src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=500" 
                   alt="Cuidado Feminino" 
@@ -654,7 +663,7 @@ const Home = () => {
             viewport={{ once: true }}
             className="order-2 lg:order-1"
           >
-            <div className="aspect-square rounded-3xl overflow-hidden shadow-xl">
+            <div className="aspect-square rounded-3xl overflow-hidden">
                <img 
                 src="https://res.cloudinary.com/dq1vvtg9v/image/upload/v1773591427/IMG_3620_1_a1kzuf.jpg" 
                 alt="Cuidado terapêutico" 
@@ -986,7 +995,7 @@ const TreatmentPage = ({ title, description, benefits, indications, image, ctaLa
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          className="rounded-3xl overflow-hidden sticky top-32"
         >
           <img src={image} alt={title} className="w-full aspect-[4/5] object-cover" referrerPolicy="no-referrer" />
         </motion.div>
@@ -1023,7 +1032,7 @@ const LiftingFacialPage = () => (
               Mais do que um cuidado estético, gosto de enxergar o lifting facial como um momento de autocuidado e bem-estar.
             </p>
             <p>
-              Muitas vezes, o rosto também carrega o cansaço, o estresse e a tensão do dia a dia — e quando cuidamos dele com presença e delicadeza, isso também se reflete na autoestima e na forma como nos sentimos.
+              Muitas vezes, o rosto também carrega o cansaço, o estresse e a tensão do dia a dia e quando cuidamos dele com presença e delicadeza, isso também se reflete na autoestima e na forma como nos sentimos.
             </p>
             <p>
               Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada atendimento de forma personalizada, observando o momento e as necessidades de cada mulher.
@@ -1089,10 +1098,10 @@ const LiftingFacialPage = () => (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          className="rounded-3xl overflow-hidden sticky top-32"
         >
           <img 
-            src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=1000" 
+            src="https://res.cloudinary.com/dplhygs4v/image/upload/v1780002234/WhatsApp_Image_2026-05-28_at_18.02.59_anigih.jpg" 
             alt="Lifting Facial Manual" 
             className="w-full aspect-[4/5] object-cover" 
             referrerPolicy="no-referrer" 
@@ -1125,7 +1134,7 @@ const DrenagemLinfaticaPage = () => (
               Durante a sessão, realizo movimentos delicados e específicos que ajudam a ativar a circulação linfática, favorecendo o equilíbrio do organismo e proporcionando uma agradável sensação de leveza.
             </p>
             <p>
-              A Drenagem Linfática Manual vai além do cuidado estético. Ela é um atendimento terapêutico que pode auxiliar no funcionamento natural do corpo, melhorar a circulação e contribuir para mais conforto físico e bem-estar.
+              A Drenagem Linfática Manual vai além do cuidado estético, é um atendimento terapêutico que pode auxiliar no funcionamento natural do corpo, melhorar a circulação e contribuir para mais conforto físico e bem-estar.
             </p>
             <p>
               Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada sessão de forma personalizada, respeitando o momento e as necessidades individuais de cada mulher.
@@ -1193,12 +1202,12 @@ const DrenagemLinfaticaPage = () => (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          className="rounded-3xl overflow-hidden sticky top-32"
         >
           <img 
-            src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" 
+            src="https://res.cloudinary.com/dplhygs4v/image/upload/v1780003028/20260125_173204_pymtgs.jpg" 
             alt="Drenagem Linfática Manual" 
-            className="w-full aspect-[4/5] object-cover" 
+            className="w-full h-auto max-h-[80vh] object-contain" 
             referrerPolicy="no-referrer" 
           />
         </motion.div>
@@ -1297,7 +1306,7 @@ const ReflexologiaPodalPage = () => (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          className="rounded-3xl overflow-hidden sticky top-32"
         >
           <img 
             src="https://res.cloudinary.com/dplhygs4v/image/upload/v1779149728/roseli_martins_massagem_em_ribeirao_pires_wvrwrc.png" 
@@ -1315,16 +1324,16 @@ const MassagensPage = () => {
   const [activeTab, setActiveTab] = React.useState('sniper');
 
   const sniperInfo = {
-    title: "Massagem Relaxante — Método Sniper",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1000",
+    title: "Massagem Relaxante / Terapêutica",
+    image: "https://res.cloudinary.com/dplhygs4v/image/upload/v1780007479/07376672-6e3a-4526-9c5c-13ce982e9693_ggimcm.png",
     paragraphs: [
-      "A Massagem Relaxante — Método Sniper é uma técnica direcionada e precisa que realizo com foco em pontos específicos de dor, tensão e sobrecarga muscular.",
+      "A Massagem Relaxante / Terapêutica é uma técnica direcionada e precisa que realizo com foco em pontos específicos de dor, tensão e sobrecarga muscular.",
       "Muitas vezes, o corpo acumula tensões silenciosas que aparecem principalmente nos ombros, pescoço e região lombar. E quando essas tensões permanecem por muito tempo, podem afetar não apenas o conforto físico, mas também o humor, o sono e a disposição.",
       "Durante esse atendimento, utilizo manobras específicas para localizar e trabalhar áreas de maior rigidez muscular, ajudando o corpo a relaxar de forma mais profunda e direcionada.",
       "Gosto de enxergar essa massagem como um cuidado para quem vive em ritmo intenso e sente o peso da rotina no próprio corpo.",
       "Aqui no Espaço Anshin Massoterapia, em Ribeirão Pires, realizo cada sessão respeitando o momento e as necessidades individuais de cada mulher."
     ],
-    benefitsIntro: "A Massagem Relaxante — Método Sniper pode ajudar a promover relaxamento e mais equilíbrio para o corpo. Entre os benefícios mais percebidos estão:",
+    benefitsIntro: "A Massagem Relaxante / Terapêutica pode ajudar a promover relaxamento e mais equilíbrio para o corpo. Entre os benefícios mais percebidos estão:",
     benefits: [
       "redução do estresse e da ansiedade",
       "alívio de tensões musculares",
@@ -1470,7 +1479,7 @@ const MassagensPage = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3 }}
-            className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+            className="rounded-3xl overflow-hidden sticky top-32"
           >
             <img 
               src={info.image} 
@@ -1581,13 +1590,15 @@ const QuickMassagePage = () => (
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl sticky top-32"
+          className="rounded-3xl overflow-hidden sticky top-32"
         >
-          <img 
-            src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=1000" 
-            alt="Quick Massage — Método Sniper" 
-            className="w-full aspect-[4/5] object-cover" 
-            referrerPolicy="no-referrer" 
+          <video 
+            src="https://res.cloudinary.com/dplhygs4v/video/upload/v1780003042/29444ca5cb5c45c3a4516a1943cdc0b8_aqjgem.mp4" 
+            className="w-full h-auto max-h-[80vh] object-contain" 
+            autoPlay
+            loop
+            muted
+            playsInline
           />
         </motion.div>
       </div>
@@ -1611,8 +1622,21 @@ const TerapiasIntegrativasPage = () => (
         </div>
         
         {/* Intro Paragraphs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg leading-relaxed text-earth-800/80 max-w-5xl mx-auto">
-          <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="rounded-3xl overflow-hidden sticky top-32"
+          >
+            <img 
+              src="https://res.cloudinary.com/dplhygs4v/image/upload/v1780055878/35f3cfba-d817-4d04-ac2f-cca85cca7e63_y6wx3d.png" 
+              alt="Terapias Integrativas" 
+              className="w-full h-auto max-h-[80vh] object-contain" 
+              referrerPolicy="no-referrer" 
+            />
+          </motion.div>
+
+          <div className="flex flex-col gap-6 text-lg leading-relaxed text-earth-800/80">
             <p>
               Acredito que cada corpo tem suas próprias necessidades e responde de uma forma única ao cuidado terapêutico.
             </p>
@@ -1622,8 +1646,6 @@ const TerapiasIntegrativasPage = () => (
             <p>
               Esses protocolos não são aplicados de forma automática.
             </p>
-          </div>
-          <div className="flex flex-col gap-4">
             <p>
               Eles podem ser incorporados às sessões conforme avaliação e indicação profissional, com o objetivo de ampliar o conforto, potencializar o relaxamento e promover uma experiência ainda mais acolhedora e personalizada.
             </p>
@@ -1647,23 +1669,24 @@ const TerapiasIntegrativasPage = () => (
             {[
               {
                 title: "Pedras Quentes",
-                image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600",
+                image: "https://res.cloudinary.com/dplhygs4v/image/upload/v1780005698/655ade1b-1250-4217-b842-2c2dc1fab7ec_dppa9f.png",
                 desc: "As pedras quentes podem ser utilizadas como recurso complementar para proporcionar relaxamento profundo e conforto muscular. O calor ajuda a relaxar regiões de tensão, favorecendo sensação de acolhimento e bem-estar durante a sessão."
               },
               {
                 title: "Manta Térmica",
-                image: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=600",
+                image: "https://res.cloudinary.com/dplhygs4v/image/upload/v1780006157/b5254071-b238-4aba-9778-2aff265f4805_xxxmq1.png",
                 desc: "A manta térmica pode ser incorporada ao atendimento para promover aquecimento corporal e maior sensação de conforto. Esse recurso auxilia o relaxamento e pode complementar protocolos terapêuticos e corporais conforme necessidade."
               },
               {
                 title: "Escalda-pés",
-                image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=600",
+                image: "https://res.cloudinary.com/dplhygs4v/image/upload/v1780004025/3_bhk450.png",
+                objectPosition: "object-bottom",
                 desc: "O escalda-pés é um momento simples e profundamente acolhedor. A água morna associada aos cuidados terapêuticos ajuda o corpo a desacelerar e pode favorecer sensação de relaxamento, descanso e reconexão consigo mesma. Muitas mulheres relatam que esse momento já inicia o processo de pausa e bem-estar."
               },
               {
                 title: "Aromaterapia",
                 subtitle: "com óleos essenciais dōTERRA",
-                image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=600",
+                image: "https://res.cloudinary.com/dplhygs4v/image/upload/v1780006402/IMG_3583_y9s2pq.jpg",
                 desc: "A aromaterapia com óleos essenciais dōTERRA pode ser integrada aos atendimentos para complementar a experiência terapêutica. Os aromas são escolhidos de forma personalizada e podem contribuir para relaxamento, conforto emocional e sensação de equilíbrio e acolhimento. Acredito que o aroma também conversa com o corpo e pode tornar o cuidado ainda mais especial."
               }
             ].map((p, idx) => (
@@ -1672,7 +1695,7 @@ const TerapiasIntegrativasPage = () => (
                   <img 
                     src={p.image} 
                     alt={p.title} 
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full object-cover hover:scale-105 transition-transform duration-500 ${p.objectPosition || 'object-center'}`}
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -1733,7 +1756,7 @@ const TerapiasIntegrativasPage = () => (
 const About = () => (
   <div className="pt-48 pb-24 px-6">
     <div className="max-w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div className="rounded-3xl overflow-hidden shadow-2xl">
+      <div className="rounded-3xl overflow-hidden">
         <img 
           src="https://res.cloudinary.com/dplhygs4v/image/upload/v1779143638/sobre_mim_roseli_martins-massoterapia_labwqu.jpg" 
           alt="Roseli Martiñs" 
@@ -1744,14 +1767,14 @@ const About = () => (
       <div className="flex flex-col gap-8">
         <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Cuidado, experiência e dedicação ao bem-estar feminino</h1>
         <p className="text-lg leading-relaxed">
-          Me chamo Roseli Martiñs, sou massoterapeuta e reflexoterapeuta dedicada ao cuidado da saúde e do equilíbrio do corpo feminino. Meu trabalho une conhecimento técnico, sensibilidade terapêutica e um atendimento acolhedor, focado nas necessidades individuais de cada mulher.
+          Me chamo Roseli Martiñs, sou massoterapeuta e reflexoterapeuta podal dedicada ao cuidado da saúde e do equilíbrio do corpo feminino. Meu trabalho une conhecimento técnico, sensibilidade terapêutica e um atendimento acolhedor, focado nas necessidades individuais de cada mulher.
         </p>
         <p className="text-lg leading-relaxed">
-          Ao longo de minha trajetória, desenvolvi um atendimento que une conhecimento técnico, sensibilidade terapêutica e cuidado individual. Meu propósito é ajudar mulheres a viverem com mais leveza, saúde e energia através dos serviços:
+          Acredito que o verdadeiro bem-estar surge quando cuidamos do corpo e da mente de forma integrada. Por isso, ofereço um espaço de acolhimento onde você pode se renovar e reencontrar sua vitalidade por meio das seguintes especialidades:
         </p>
         <div className="flex flex-col gap-4">
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {['Reflexoterapia podal', 'Drenagem linfática', 'Massagem terapêutica', 'Aromaterapia', 'Lifting facial manual'].map(s => (
+            {['Reflexoterapia podal', 'Drenagem linfática', 'Massagem terapêutica', 'Aromaterapia', 'Massagem relaxante', 'Lifting facial manual'].map(s => (
               <li key={s} className="flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-sage-600" />
                 <span className="text-lg">{s}</span>
@@ -1766,7 +1789,7 @@ const About = () => (
 );
 
 const Contact = () => (
-  <div className="pt-32 section-padding text-center">
+  <div className="pt-48 section-padding text-center">
     <div className="max-w-2xl mx-auto flex flex-col gap-8">
       <h1 className="text-4xl md:text-5xl text-sage-800 font-bold">Agende seu atendimento</h1>
       <p className="text-lg">
@@ -1797,13 +1820,13 @@ const ResultsPage = () => (
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
         <BeforeAfterSlider 
-          before="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=800" 
-          after="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=800"
+          before="https://res.cloudinary.com/dplhygs4v/image/upload/v1780004025/1_r4osqr.png" 
+          after="https://res.cloudinary.com/dplhygs4v/image/upload/v1780004449/vanda_depois_kngzqx.jpg"
           label="Lifting Facial Manual"
         />
         <BeforeAfterSlider 
-          before="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&q=80&w=800" 
-          after="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800"
+          before="https://res.cloudinary.com/dplhygs4v/image/upload/v1780005113/e5a1ef04-a218-4119-9220-ffb47d993bad_waorsv.png" 
+          after="https://res.cloudinary.com/dplhygs4v/image/upload/v1780004996/6f1dbbf4-b2ca-42a9-9c40-f6116fee2437_pzswid.png"
           label="Drenagem Linfática"
         />
       </div>
@@ -1845,14 +1868,14 @@ const ProductsPage = () => (
             >
               Quero Conhecer os Produtos
             </a>
-            <WhatsAppButton label="Falar com Roseli" className="w-fit" />
+            <WhatsAppButton label="Fale comigo" className="w-fit" />
           </div>
         </motion.div>
         
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="rounded-3xl overflow-hidden shadow-2xl relative"
+          className="rounded-3xl overflow-hidden relative"
         >
           <img 
             src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&q=80&w=1000" 
@@ -2070,132 +2093,13 @@ const NossoEspaco = () => (
   </div>
 );
 
-const BookingPage = () => {
-  React.useEffect(() => {
-    const script = document.createElement('script');
-    script.src = "https://assets.calendly.com/assets/external/widget.js";
-    script.async = true;
-    document.body.appendChild(script);
-    
-    // Scroll to top on mount
-    window.scrollTo(0, 0);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
-  }, []);
-
-  return (
-    <div className="pt-40 pb-20 px-6 bg-earth-50 min-h-screen">
-      <div className="max-w-6xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
-        >
-          <div className="inline-block bg-gold-soft/20 text-sage-800 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
-            Agendamento Online
-          </div>
-          <h1 className="text-4xl md:text-7xl font-serif text-sage-800 font-bold mb-6">Como Funciona</h1>
-          <p className="text-lg md:text-xl text-earth-800/70 max-w-3xl mx-auto leading-relaxed">
-            O atendimento no Espaço Anshin é <span className="text-sage-800 font-bold">exclusivo para mulheres</span>. 
-            A reserva antecipada garante a exclusividade do seu horário e a preparação personalizada do ambiente para você.
-          </p>
-        </motion.div>
-
-        {/* Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-          {[
-            { step: '01', title: 'Escolha seu procedimento e horário', desc: 'Selecione o serviço desejado e o melhor momento na agenda abaixo.' },
-            { step: '02', title: 'Realize o pagamento da taxa de reserva', desc: 'Após escolher o horário, você receberá as instruções para o pagamento da taxa.' },
-            { step: '03', title: 'Receba a confirmação e instruções', desc: 'Confirmaremos seu agendamento e enviaremos as orientações pré-atendimento.' },
-          ].map((item, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-white p-10 rounded-[40px] border border-earth-100 shadow-xl relative overflow-hidden group hover:border-gold-soft/50 transition-colors"
-            >
-              <span className="absolute -top-6 -right-6 text-9xl font-serif font-bold text-sage-50 group-hover:text-gold-soft/10 transition-colors">
-                {item.step}
-              </span>
-              <div className="w-12 h-12 bg-sage-800 text-white rounded-2xl flex items-center justify-center mb-6 relative z-10 font-bold">
-                {item.step}
-              </div>
-              <h3 className="text-xl font-bold text-sage-800 mb-4 relative z-10 leading-tight">{item.title}</h3>
-              <p className="text-earth-800/60 text-sm relative z-10 leading-relaxed">{item.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Calendly Widget */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-white rounded-[60px] border border-earth-100 shadow-2xl p-4 md:p-10 mb-16 overflow-hidden"
-        >
-          <div className="mb-8 flex items-center justify-between px-4">
-            <div className="flex items-center gap-3 text-sage-800">
-              <Clock size={24} />
-              <span className="font-bold uppercase tracking-widest text-sm">Agenda Disponível</span>
-            </div>
-            <div className="hidden md:flex items-center gap-2 text-earth-400 text-xs">
-              <MapPin size={14} />
-              <span>Ribeirão Pires - SP</span>
-            </div>
-          </div>
-          
-          {/* Calendly Inline Widget */}
-          <div 
-            className="calendly-inline-widget" 
-            data-url="https://calendly.com/roselimartins-terapias" 
-            style={{ minWidth: '320px', height: '750px' }}
-          ></div>
-        </motion.div>
-
-        {/* Final CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center bg-sage-800 text-white p-12 md:p-20 rounded-[60px] shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
-            <Flower2 size={400} className="absolute -bottom-20 -right-20" />
-            <Flower2 size={300} className="absolute -top-20 -left-20 rotate-180" />
-          </div>
-          
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif italic font-bold mb-8">
-              Já escolheu seu horário na agenda acima?
-            </h2>
-            <p className="text-sage-100 mb-10 text-lg">
-              Clique no botão abaixo para confirmar seu agendamento e receber as instruções para o pagamento da taxa de reserva.
-            </p>
-            <WhatsAppButton 
-              label="Confirmar Agendamento via WhatsApp" 
-              className="bg-white text-sage-800 hover:bg-sage-50 shadow-2xl scale-110"
-              message="Olá Roseli, escolhi um horário na agenda para o procedimento [NOME DO PROCEDIMENTO] na [DIA E HORA]. Como faço para enviar o comprovante da taxa de reserva?"
-            />
-            <p className="mt-8 text-xs text-sage-300 uppercase tracking-widest font-bold">
-              Atendimento exclusivo para mulheres
-            </p>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
-
 // --- Main App ---
 
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
+        <ScrollToTop />
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -2205,7 +2109,6 @@ export default function App() {
             <Route path="/metodo-anshin" element={<MetodoAnshin />} />
             <Route path="/resultados" element={<ResultsPage />} />
             <Route path="/produtos-doterra" element={<ProductsPage />} />
-            <Route path="/agendamento" element={<BookingPage />} />
             <Route path="/contato" element={<Contact />} />
             
             {/* Treatment Routes */}
