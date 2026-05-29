@@ -27,18 +27,18 @@ No painel da Hostinger:
 Para manter a separação total entre o código fonte (Dev) e o build final (Produção):
 
 1.  O **GitHub Actions** ([deploy.yml](.github/workflows/deploy.yml)) monitora a branch `main`.
-2.  A cada `git push` na `main`, o build é gerado e os arquivos da pasta `dist/` são enviados para uma branch isolada chamada **`production`**.
-3.  O **Webhook da Hostinger** deve ser configurado para monitorar a branch **`production`**.
+2.  A cada `git push` na `main`, o build é gerado e os arquivos da pasta `dist/` são enviados para uma branch isolada chamada **`prod`**.
+3.  O **Webhook da Hostinger** deve ser configurado para monitorar a branch **`prod`**.
 
 ### Como configurar na Hostinger:
 1. No painel da Hostinger, vá em **Site > Git**.
-2. No campo **Branch**, coloque: `production`.
+2. No campo **Branch**, coloque: `prod`.
 3. No campo **Diretório de Instalação**, coloque: `public_html/clientes/anshin/public`.
 4. Use o **Git Webhook** do GitHub para automatizar a puxada de arquivos.
 
 ## 4. Segurança e Hardening
 
-*   **Remoção de APIs:** Toda e qualquer chave sensível (ex: Gemini) foi removida do código para evitar exposição.
+
 *   **Separação Dev/Build:** Somente os arquivos compilados (`index.html`, `js/`, `css/`, `assets/`) são publicados. O código fonte nunca chega à web.
 *   **.htaccess Especializado:** Criado para garantir que rotas do React (SPA) funcionem sem erro 404, além de ativar compressão Gzip e cache.
 *   **Caminhos Relativos:** O projeto está configurado com `base: './'` no Vite para funcionar corretamente dentro de subdiretórios ou subdomínios.

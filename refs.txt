@@ -1,0 +1,4 @@
+./README.md:2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+./README_HOSTINGER.md:*   **Remoção de APIs:** Toda e qualquer chave sensível (ex: Gemini) foi removida do código para evitar exposição.
+./.env.example:# GEMINI_API_KEY: Required for Gemini AI API calls.
+./.env.example:GEMINI_API_KEY="MY_GEMINI_API_KEY"

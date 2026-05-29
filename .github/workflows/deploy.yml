@@ -31,8 +31,7 @@ jobs:
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
-          BRANCH: production # Branch que a Hostinger vai puxar
+          BRANCH: prod # Branch que a Hostinger vai puxar
           FOLDER: dist # Pasta que contem o build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MESSAGE: "Deploy: ({sha}) {msg}"
-
